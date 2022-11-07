@@ -12,9 +12,9 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<link rel="canonical" href="https://demo-basic.adminkit.io/ui-cards.html" />
+	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-profile.html" />
 
-	<title>Cards | AdminKit Demo</title>
+	<title>Profile | AdminKit Demo</title>
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
             </a>
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item ">
 						<a class="sidebar-link" href="pages-profile.html">
               <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
             </a>
@@ -62,6 +62,16 @@
               <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
             </a>
 					</li>
+                    <li class="sidebar-item">
+						<a class="sidebar-link" href="evenement.html">
+              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Evenements</span>
+            </a>
+					</li>
+					<li class="sidebar-item  active ">
+						<a class="sidebar-link" href="association.html">
+              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Associations</span>
+            </a>
+					</li>
 
 					<li class="sidebar-header">
 						Tools & Components
@@ -79,7 +89,7 @@
             </a>
 					</li>
 
-					<li class="sidebar-item active">
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="ui-cards.html">
               <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Cards</span>
             </a>
@@ -289,72 +299,99 @@
 					</ul>
 				</div>
 			</nav>
-
-			<main class="content">
+            
+            <main class="content">
 				<div class="container-fluid p-0">
 
 					<div class="mb-3">
-						<h1 class="h3 d-inline align-middle">Cards</h1>
-						<a class="badge bg-dark text-white ms-2" href="upgrade-to-pro.html">
-      Get more card examples
+						<h1 class="h3 d-inline align-middle">UNE ASSOCIATION</h1>
+						<a class="badge bg-dark text-white ms-2" href="liste des associations.html">
+     
   </a>
 					</div>
 					<div class="row">
-						<div class="col-20 col-md-20">
-							<div class="card">
-								<img class="card-img-top" src="img/photos/unsplash-1.jpg" alt="Unsplash">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Card with image and links</h5>
-								</div>
-								<div class="card-body">
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#" class="card-link">Card link</a>
-									<a href="#" class="card-link">Another link</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-20 col-md-20">
-							<div class="card">
-								<img class="card-img-top" src="img/photos/unsplash-2.jpg" alt="Unsplash">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Card with image and button</h5>
-								</div>
-								<div class="card-body">
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#" class="btn btn-primary">Go somewhere</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-20 col-md-20">
+						<div class="col-12 col-lg-6">
 							<div class="card">
 								<div class="card-header">
-									<h5 class="card-title mb-0">Card with links</h5>
+									<h5 class="card-title mb-0">NOM D'ASSOCIATION</h5>
 								</div>
 								<div class="card-body">
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#" class="card-link">Card link</a>
-									<a href="#" class="card-link">Another link</a>
+									<input type="text" class="form-control" placeholder="NOM D'ASSOCIATION">
 								</div>
 							</div>
-						</div>
 
-						<div class="col-20 col-md-20">
-							<div class="card">
+                            <div class="card">
 								<div class="card-header">
-									<h5 class="card-title mb-0">Card with button</h5>
+									<h5 class="card-title mb-0">client </h5>
 								</div>
 								<div class="card-body">
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#" class="btn btn-primary">Go somewhere</a>
+									<input type="datetime-local" id="meeting-time" name="meeting-time"  class="form-control" >
 								</div>
 							</div>
-						</div>
-					</div>
 
-				</div>
-			</main>
+                            <div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">TYPE D'ASSOCIATION</h5>
+								</div>
+								<div class="card-body">
+									<input type = "radio" name ="genre" value ="ag" >  ASSOCIATION AGRÉÉE
+                                    <input type = "radio" name ="genre" value ="af"  > ASSOCIATION DE FAIT
+                                    <input type = "radio" name ="genre" value ="au" >  ASSOCIATION D’UTILITÉ PUBLIQUE
+								</div>
+							</div>
+                            <div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">OBJECTIVE D'ASSOCIATION</h5>
+								</div>
+								<div class="card-body">
+                                    <textarea name=""   placeholder="OBJECTIVE  D'ASSOCIATION"  id="" cols="20" rows="10"></textarea>
+								</div>
+							</div>
+
+
+                            <div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">ADRESSE</h5>
+								</div>
+								<div class="card-body">
+									<input type="text" class="form-control" placeholder="ADRESSE">
+								</div>
+							</div>
+
+
+                            <div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">NUMÉRO DE TÉLÉPHONE</h5>
+								</div>
+								<div class="card-body">
+									<input type="tel" id="phone" name="phone"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  required  placeholder="NUMÉRO DE TÉLÉPHONE">
+								</div>
+							</div>
+                            
+
+                            <div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">NOMBRE DE POINTS EN RÉCOMPENSE </h5>
+								</div>
+								<div class="card-body">
+									<input type="tel" id="phone" name="phone"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  required  placeholder="NOMBRE DE POINTS EN RÉCOMPENSE">
+								</div>
+							</div>
+
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <button class="btn btn-primary">Ajouter</button>
+                                    <button class="btn btn-secondary">Afficher</button>
+                                    <button class="btn btn-success">Modifier</button>
+                                    <button class="btn btn-danger">Supprimer</button>
+                                </div>
+
+
+
+
+            
+  </a>
+					
 
 			<footer class="footer">
 				<div class="container-fluid">
