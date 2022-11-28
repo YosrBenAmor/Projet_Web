@@ -1,13 +1,56 @@
-<?php include('server.php') ?>
-<!DOCTYPE html>
+<?php
+   include_once '../Model/user.php';
+    include_once '../Controller/userC.php';
+
+    // create user
+    $user = null;
+
+    // create an instance of the controller
+    $userC = new userC();
+    if (
+
+        isset($_POST["password"]) &&
+        isset($_POST["email"]) 
+    ) {
+        if (
+
+            !empty($_POST["password"]) && 
+            !empty($_POST["email"]) 
+        ) {
+			$password = $_POST["password"];
+			$email = $_POST["email"] ; 
+		$result = $userC->recupereruserByemail($email,$password);
+		if($result == null)
+			$error ="Email et/ou mot de passe est incorrect";
+		else{
+			
+				session_start();
+                	//$_SESSION['nom'] = $result->getNom();
+			    	header('Location: afficherListeUsers.php');}
+			
+
+			$_SESSION['msg'] = "vous etes connecté ! yay !!!";
+           // header('Location:afficherListeUsers.php');
+        }
+        /*else
+            $error = "Veuillez verifier votre email ou mot de passe";*/
+    }
+
+
+
+    
+?>
 <html>
-	<head>
+<head>
 		<title>PHPJabbers.com | Free Blog Website Template</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
+	<script type="text/javascript" src="val.js"></script>
+
 	</head>
 	<body class="is-preload">
 
@@ -38,43 +81,66 @@
 				</nav>
 
 				<!-- Main -->
-					<div id="main" class="alt">
+
+
+		
+					
 
 
 				<!-- form -->
-					
-				<div class="inner">
+				
+					<div>
+						<div class="inner">
 							<section>
 								<header class="major">
-									<h2>welcome back !</h2>
-									<h5>se connecter</h5>
+									<h2>Commencez a troquer !</h2>
+									<h5>Creer un compte</h5>
 								</header>
 
-								<form method="post" action="#">
-								<?php include('errors.php'); ?>
-  	<div class="input-group">
-  		<label>Username</label>
-  		<input type="text" name="username" >
-  	</div>
-  	<div class="input-group">
-  		<label>Password</label>
-  		<input type="password" name="password">
-  	</div>
-  	<div class="input-group">
-  		<button type="submit" class="btn" name="login_user">Login</button>
-  	</div>
-  	<p>
-  		Not yet a member? <a href="register.php">Sign up</a>
-  	</p>
- vous avez deja un compte? <a href="login.php">se connecter</a>
-  	</p>
+								
+				<form action="" method="POST"  name="amin" onsubmit="return validateForm(event)" >
+									<div class="fields">
+
+										<div class="field">
+											<label for="email">email</label>
+											<input type="text" name="email" id="email" />
+											<p id="emailER" class="error"></P>
+										</div>
+										<div class="field">
+											<label for="password">mot de passe</label>
+											 <input type="text" value="" name="password" id="password"/><br>
+											<input type="checkbox" onclick="myFunction()">Show Password
+											
+											<script>
+											function myFunction() {
+											  var x = document.getElementById("password");
+											  if (x.type === "password") {
+												x.type = "text";
+											  } else {
+												x.type = "password";
+											  }
+											}
+											</script>
+											
+											
+										</div>
+										<p id="passER" class="error"></P>
+								
+
+										<div class="field half text-right">
+											<ul class="actions">
+												<li><input type="submit" value="se connecter" class="primary" /></li>
+																	
+													</ul>
+													<p>
+												vous n'avez pas un compte? <a href="ajouterUser.php">creer un compte</a>
+										</p>	
 										</div>
 									</div>
 								</form>
 							
 						</div>
-					
-
+						</div>
 					
 
 

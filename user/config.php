@@ -1,8 +1,5 @@
 <?php
-session_start();
-
-
-class config {
+  class config {
     private static $pdo = NULL;
 
     public static function getConnexion() {
@@ -21,29 +18,3 @@ class config {
       return self::$pdo;
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  $conn = mysqli_connect("localhost", "root", "", "projet_web");

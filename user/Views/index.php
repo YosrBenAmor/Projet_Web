@@ -1,15 +1,15 @@
 <?php 
   session_start(); 
 
-  if (!isset($_SESSION['username'])) {
+  /*if (!isset($_SESSION['nom'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login.php');
   }
   if (isset($_GET['logout'])) {
   	session_destroy();
-  	unset($_SESSION['username']);
+  	//unset($_SESSION['nom']);
   	header("location: login.php");
-  }
+  }*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,8 +35,8 @@
   	<?php endif ?>
 
     <!-- logged in user information -->
-    <?php  if (isset($_SESSION['username'])) : ?>
-    	<p>Welcome!!! <strong><?php echo $_SESSION['username']; ?></strong></p>
+    <?php  if (isset($_SESSION['nom'])) : ?>
+    	<p>Welcome!!! <strong><?php echo $_SESSION['nom']; ?></strong></p>
     	<p> <a href="index.php?logout='1'"  >logout</a> </p>
     <?php endif ?>
 </div>

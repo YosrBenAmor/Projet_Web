@@ -1,9 +1,10 @@
+
 <?php
 include '../Controller/UserC.php';
 $user = new UserC();
 
 if (isset($_GET['label']) && !empty($_GET['label'])) {
-    $listeUsers = $user->afficherUser($_GET['label']);
+    $listeUsers = $user->afficheruser($_GET['label']);
 } else {
     $listeUsers = $user->afficherusers();
 }
@@ -44,7 +45,7 @@ if (isset($_GET['label']) && !empty($_GET['label'])) {
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="index.html">
+                        <a class="sidebar-link" href="trouverUser.php">
                             <i class="align-middle" data-feather="sliders"></i> <span
                                 class="align-middle">Dashboard</span>
                         </a>
@@ -70,8 +71,8 @@ if (isset($_GET['label']) && !empty($_GET['label'])) {
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="pages-blank.html">
-                            <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
+                        <a class="sidebar-link" href="login.php">
+                            <i class="align-middle" data-feather="book"></i> <span class="align-middle">Se déconnecter</span>
                         </a>
                     </li>
 
@@ -265,15 +266,12 @@ if (isset($_GET['label']) && !empty($_GET['label'])) {
             </nav>
 
             <div>
-        <form action="" method="GET">
-            <input type="text" name="label" id="label" placeholder="donner le ID dutulisateur">
-            <input type="submit" value="Search">
-        </form>
+     
     </div>
             <main class="content">
                 <div class="container-fluid p-0">
 
-                    <h1 class="h3 mb-3">utilisateurs possibles</h1>
+                    <h1 class="h3 mb-3">liste utilisateurs</h1>
 
                    
                                 
@@ -284,7 +282,8 @@ if (isset($_GET['label']) && !empty($_GET['label'])) {
                                                 <tr>
                                                 
                                                     <th class="text-center">ID</th>
-                                                    <th class="text-center">username </th>
+                                                    <th class="text-center">nom </th>
+                                                    <th class="text-center">prenom</th>
                                                     <th class="text-center">pts</th>
                                                     <th class="text-center">MOT DE PASSE</th>
                                                     <th class="text-center">ADRESSE</th>
@@ -297,7 +296,8 @@ if (isset($_GET['label']) && !empty($_GET['label'])) {
         ?>
         <tr>
             <td><?php echo $user['id']; ?></td>
-            <td><?php echo $user['username']; ?></td>
+            <td><?php echo $user['nom']; ?></td>
+            <td><?php echo $user['prenom']; ?></td>
             <td><?php echo $user['pts']; ?></td>
             <td><?php echo $user['password']; ?></td>
             <td><?php echo $user['adresse']; ?></td>
@@ -306,11 +306,7 @@ if (isset($_GET['label']) && !empty($_GET['label'])) {
             <td><?php echo $user['usad']; ?></td>
             <div class="card-body text-center">
                                 <div class="mb-3">
-  
-                                
-                                <td>  <button class="align-middle me-2" ><a href="supprimerusert.php?id=<?php echo $adherent['id']; ?>">x</a></button></td>
-                                
-                                
+                            
                                 </div>
            
         </tr>
@@ -338,16 +334,7 @@ if (isset($_GET['label']) && !empty($_GET['label'])) {
                 
                                 
 
-                <div class="col-12 col-lg-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title">Statistiques</h5>
-                            <h6 class="card-subtitle text-muted">Les utilisateurs les plus actives</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart chart-sm">
-                                <canvas id="chartjs-pie"></canvas>
-                            </div>
+
                         
 
 </body>

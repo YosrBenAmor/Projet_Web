@@ -1,15 +1,17 @@
 <?php
-include_once '../Model/user.php';
-include_once '../Controller/UserC.php';
-$userC = new userc();
-$listeUsers = $userC->afficherusers();
+include '../Controller/UserC.php';
+$user = new UserC();
+
+if (isset($_GET['label']) && !empty($_GET['label'])) {
+    $listeUsers = $user->afficheruser($_GET['label']);
+} else {
+    $listeUsers = $user->afficherusers();
+}
 ?>
+<html>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8">
+<head> <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
@@ -25,10 +27,10 @@ $listeUsers = $userC->afficherusers();
     <title>Upgrade to Pro | AdminKit Demo</title>
 
     <link href="css/app.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet"></head>
 
 <body>
+
     <div class="wrapper">
         <nav id="sidebar" class="sidebar js-sidebar">
             <div class="sidebar-content js-simplebar">
@@ -50,7 +52,7 @@ $listeUsers = $userC->afficherusers();
 
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="pages-profile.html">
-                            <i class="align-middle" data-feather="users"></i> <span class="align-middle">Profile</span>
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
                         </a>
                     </li>
 
@@ -62,14 +64,14 @@ $listeUsers = $userC->afficherusers();
 
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="pages-sign-up.html">
-                            <i class="align-middle" data-feather="users-plus"></i> <span class="align-middle">Sign
+                            <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign
                                 Up</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="pages-blank.html">
-                            <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
+                        <a class="sidebar-link" href="login.php">
+                            <i class="align-middle" data-feather="book"></i> <span class="align-middle">Se déconnecter</span>
                         </a>
                     </li>
 
@@ -140,7 +142,7 @@ $listeUsers = $userC->afficherusers();
                                     <a href="#" class="list-group-item">
                                         <div class="row g-0 align-items-center">
                                             <div class="col-2">
-                                                <i class="text-success" data-feather="users-plus"></i>
+                                                <i class="text-success" data-feather="user-plus"></i>
                                             </div>
                                             <div class="col-10">
                                                 <div class="text-dark">New connection</div>
@@ -246,7 +248,7 @@ $listeUsers = $userC->afficherusers();
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1"
-                                        data-feather="users"></i> Profile</a>
+                                        data-feather="user"></i> Profile</a>
                                 <a class="dropdown-item" href="#"><i class="align-middle me-1"
                                         data-feather="pie-chart"></i> Analytics</a>
                                 <div class="dropdown-divider"></div>
@@ -262,12 +264,18 @@ $listeUsers = $userC->afficherusers();
                 </div>
             </nav>
 
+            <div>
+        <form action="" method="GET">
+            <input type="text" name="label" id="label" placeholder="donner le ID dutulisateur">
+            <input type="submit" value="Search">
+        </form>
+    </div>
             <main class="content">
                 <div class="container-fluid p-0">
 
-                    <h1 class="h3 mb-3">Liste Des utilisateurs</h1>
+                    <h1 class="h3 mb-3">utilisateurs possibles</h1>
 
-                 
+                   
                                 
                                 <div class="card-body">
                                     <div class="table-responsive table-upgrade">
@@ -276,7 +284,8 @@ $listeUsers = $userC->afficherusers();
                                                 <tr>
                                                 
                                                     <th class="text-center">ID</th>
-                                                    <th class="text-center">username </th>
+                                                    <th class="text-center">nom </th>
+                                                    <th class="text-center">prenom</th>
                                                     <th class="text-center">pts</th>
                                                     <th class="text-center">MOT DE PASSE</th>
                                                     <th class="text-center">ADRESSE</th>
@@ -285,29 +294,32 @@ $listeUsers = $userC->afficherusers();
                                                     <th class="text-center">usad</th>
                                                 </tr>
                                                 <?php
-        foreach ($listeUsers as $users) {
+        foreach ($listeUsers as $user) {
         ?>
         <tr>
-            <td><?php echo $users['id']; ?></td>
-            <td><?php echo $users['username']; ?></td>
-            <td><?php echo $users['pts']; ?></td>
-            <td><?php echo $users['password']; ?></td>
-            <td><?php echo $users['adresse']; ?></td>
-            <td><?php echo $users['email']; ?></td>
-            <td><?php echo $users['tel']; ?></td>
-            <td><?php echo $users['usad']; ?></td>
+            <td><?php echo $user['id']; ?></td>
+            <td><?php echo $user['nom']; ?></td>
+            <td><?php echo $user['prenom']; ?></td>
+            <td><?php echo $user['pts']; ?></td>
+            <td><?php echo $user['password']; ?></td>
+            <td><?php echo $user['adresse']; ?></td>
+            <td><?php echo $user['email']; ?></td>
+            <td><?php echo $user['tel']; ?></td>
+            <td><?php echo $user['usad']; ?></td>
             <div class="card-body text-center">
                                 <div class="mb-3">
   
                                 
-                                <td>  <button class="align-middle me-2" ><a href="supprimeruser.php?id=<?php echo $users['id']; ?>">x</a></button></td>
+                                <td>  <button class="align-middle me-2" ><a href="supprimeruser.php?id=<?php echo $user['id']; ?>">x</a></button></td>
                                 
                                 
                                 </div>
            
         </tr>
+        
 
         <?php
+        
         }
         ?>
                                             </thead>
@@ -316,13 +328,39 @@ $listeUsers = $userC->afficherusers();
 
 
                                             <div class="card-body text-center">
-                                <div class="mb-3">
-                                <td>    <a href="register.php">  <button class="btn btn-success" >Ajouter</a></button></td>
                                 
-                                </div> </div>
 
 
                                         </table>
+                                        </div>
+					<div class="row">
+						<div class="col-12 col-lg-6">
+							<div class="card flex-fill w-100">
+								<div class="card-header">
+									<h5 class="card-title">Line Chart</h5>
+									<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>
+								</div>
+								<div class="card-body">
+									<div class="chart">
+										<canvas id="chartjs-line"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-lg-6">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">Bar Chart</h5>
+									<h6 class="card-subtitle text-muted">A bar chart provides a way of showing data values represented as vertical bars.</h6>
+								</div>
+								<div class="card-body">
+									<div class="chart">
+										<canvas id="chartjs-bar"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
                                     </div>
                                 </div>
                             </div>
@@ -333,14 +371,9 @@ $listeUsers = $userC->afficherusers();
                 
                                 
 
-                <div class="col-12 col-lg-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title">Statistiques</h5>
-                            <h6 class="card-subtitle text-muted">Les utilisateurs les plus actives</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart chart-sm">
-                                <canvas id="chartjs-pie"></canvas>
-                            </div>
+
                         
+
+</body>
+
+</html>
