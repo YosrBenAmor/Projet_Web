@@ -3,6 +3,7 @@ include '../Controller/associationC.php';
 $associationC = new associationC();
 $list = $associationC->listassociation();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -274,7 +275,8 @@ $list = $associationC->listassociation();
                 <div class="mb-3"> 
 
                     <h1 class="h3 mb-3">Liste Des Association</h1>
-                    <a class="badge bg-dark text-white ms-2" href="addassociation.php"> </a>
+                    <a class="badge bg-dark text-white ms-2" href="Statistique.php"> </a>
+                    <a class="badge bg-dark text-white ms-2" href="chercherassociation.php"> </a>
 
                     <div class= row align-items-center> 
                         <div class="col-40 col-md-40 col-lg-55 col-xl-99 col-xxl-45 mx-auto">
@@ -300,8 +302,9 @@ $list = $associationC->listassociation();
         foreach ($list as $association) {
         ?>
         <tr>
+        
             <td><?php echo $association['nom_ass']; ?></td>
-            <td><?php echo $association['img_ass']; ?></td>
+            <td><img src="img/<?php echo $association['img_ass']; ?>"     width="100"    height="100"></td>
             <td><?php echo $association['datefondation']; ?></td>
             <td><?php echo $association['objectif_ass']; ?></td>
             <td><?php echo $association['adresse_ass']; ?></td>
@@ -343,19 +346,3 @@ $list = $associationC->listassociation();
                        </div>
                    </div>
    
-                   
-                                   
-   
-                   <div class="col-12 col-lg-6">
-                       <div class="card">
-                           <div class="card-header">
-                               <h5 class="card-title">Statistiques</h5>
-                               <h6 class="card-subtitle text-muted">Les associations les plus bénéficaires</h6>
-                           </div>
-                           <div class="card-body">
-                               <div class="chart chart-sm">
-                                   <canvas id="chartjs-pie"></canvas>
-                               </div>
-                           </div>
-                       </div>
-                   </div>

@@ -326,10 +326,11 @@ if (
                                 <h5 class="card-title mb-0">IMAGE D'ASSOCIATION</h5>
                             </div>
                             <div class="card-body">
-                            <input type="text" class="form-control"  id="img_ass" name="img_ass">
+                            <input type="file" class="form-control"  id="img_ass" name="img_ass">
                             </div>
                             </div>
-
+							<form action="/action_page.php">
+   
                <div class="card">
            <div class="card-header">
                                 <h5 class="card-title mb-0">DATE DE FONDATION</h5>

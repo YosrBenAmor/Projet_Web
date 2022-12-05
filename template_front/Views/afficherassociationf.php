@@ -2,6 +2,7 @@
 include '../Controller/associationC.php';
 $associationC = new associationC();
 $list = $associationC->listassociation();
+$liste = $associationC->listassociation();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -12,6 +13,20 @@ $list = $associationC->listassociation();
 		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="assets/css/main.css"/>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<style>
+#show_up{
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ddd;
+    display: none;
+}
+#show_up a{
+    border-bottom: 1px solid #ddd;
+    display: block;
+    padding: 5px;
+}
+</style>
 	</head>
 	<body class="is-preload">
 
@@ -30,9 +45,7 @@ $list = $associationC->listassociation();
 				<!-- Menu -->
 				<nav id="menu">
 					<ul class="links">
-		                <li> <a href="index.html">Home </a> </li>
-
-		                <li> <a href="blog.html">Blog</a> </li>
+		                <li> <a href="index.php">Home </a> </li>
 
 		                <li> <a href="about-us.html">Catégorie</a> </li>
 		                
@@ -51,29 +64,38 @@ $list = $associationC->listassociation();
 								<header class="major">
 									<h4>LES ASSOCIATIONS PROPOSÉES</h4>
 								</header>
-                                <thead>
-                                                
-                                                <?php
-                                                foreach ($list as $association) 
-                                                {
+                                <thead>                                 
+								<?php
+                                                foreach ($list as $association) {
                                                 ?>
-        
-                                              <div class="card-body text-center"><?php echo $association['nom_ass']; ?>
-                                              </div>
+                                                
+                                        <img src="images/<?php echo $association['img_ass']; ?>  "  width="300"    height="250">
+                                                
+                                         
                                                 <?php
-                                                }
-                                                 ?>
-                                              </div>
-                                              <div class="card-body text-center"><a href="afficherdetailass.php">Voir les détails</a>
-                                              </div>
-                                              <br>
-                                              <br>
+         }
+		
+        ?>
+		<br>
+		<br>
+                                                <?php
+                                                foreach ($liste as $association) {
+                                                ?>
+<?php echo "|||||||||||||||||||||||||||".$association['nom_ass']."||||||||||||"."|||||||||||||"; ?>
+
+            
+                                                   <?php
+         }
+        ?>
+		<br>
+		<br>
+		<br>
+		
+		<div class="col-md-3 col-sm-6 co-xs-12 text-center">  <a href="afficherdetailass.php">Voir les détails</a> </div>
                                 </thead>
 								
 								
 
-									
-									
 
 							</div>
 						</section>
@@ -88,6 +110,7 @@ $list = $associationC->listassociation();
     
 
 				<!-- Footer -->
+				
 					<footer id="footer">
 						<div class="inner">
 							<ul class="icons">

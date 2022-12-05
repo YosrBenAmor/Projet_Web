@@ -109,8 +109,76 @@ class associationC
         }
     }
 
+    function showa($nom_ass)
+    {
+        $sql = "SELECT * FROM association WHERE nom_ass LIKE '%" . $nom_ass . "%'";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
 
+            $association = $query->fetchAll();
+            return $association;
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
 
+    function sourire()
+    {
+        $sql = "SELECT count(*) AS nb FROM association WHERE objectif_ass = 'SOURIRE'";
+        
+
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $association = $query->fetch();
+            return $association['nb'];
+
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+       
+    }
+    function vivre()
+    {
+        $sql = "SELECT count(*) AS nb FROM association WHERE objectif_ass = 'VIVRE'";
+        
+
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $association = $query->fetch();
+            return $association['nb'];
+
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+       
+    }
+    function reussir()
+    {
+        $sql = "SELECT count(*) AS nb FROM association WHERE objectif_ass = 'RÉUSSIR'";
+        
+
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $association = $query->fetch();
+            return $association['nb'];
+
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+       
+    }
+    
 
    
 

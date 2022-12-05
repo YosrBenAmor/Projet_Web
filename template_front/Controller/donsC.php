@@ -97,7 +97,20 @@ class donC
             die('Error: ' . $e->getMessage());
         }
     }
+    function show($nom_don)
+    {
+        $sql = "SELECT * FROM don WHERE nom_don LIKE '%" . $nom_don . "%'";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
 
+            $don = $query->fetchAll();
+            return $don;
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
 
 
 
