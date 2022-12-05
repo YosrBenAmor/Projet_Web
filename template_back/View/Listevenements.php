@@ -2,6 +2,16 @@
 include '../Controller/evenementC.php';
 $evenementC = new evenementC();
 $list = $evenementC->listevenements();
+
+if (isset($_GET['attribut']) && !empty($_GET['attribut'])) {
+    $list = $evenementC->search_nor($_GET['attribut']);
+} else {
+    $list = $evenementC->listevenements();
+}
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -275,15 +285,20 @@ $list = $evenementC->listevenements();
 				<div class="container-fluid p-0">
 
 					<h1 class="h3 mb-3">Liste Des Evenements</h1>
-
+			
 					<div class= row align-items-center> 
 						<div class="col-40 col-md-40 col-lg-55 col-xl-99 col-xxl-45 mx-auto">
 							<div class="card">
 								<div class="card-body">
 									<div class="table-responsive table-upgrade">
+									<form action="" method="GET">
+            <input type="text" name="attribut" id="attribut" placeholder="chercher par nom ou lieu d'évenement">
+            <input type="submit" value="Chercher" class="btn btn-success">
+        </form>
 										<table class="table">
 											<thead>
 												<tr>
+												<th class="text-center">IMAGE D'ÉVÉNEMENT</th>
 												   <th class="text-center">NOM D'ÉVÉNEMENT</th>
 													<th class="text-center">DATE</th>
 													<th class="text-center">LIEU</th>
@@ -292,20 +307,23 @@ $list = $evenementC->listevenements();
 													<th class="text-center">SOMME</th>
 													<th class="text-center">NOMBRE DE POINTS EN RÉCOMPENSE</th>
 													<th class="text-center">INTERDIT À CEUX QUI SOUFFRENT DE</th>
+													<th class="text-center">NOTE</th>
 													<th class="text-center">OPTION</th>
 												</tr>
 												<?php
 		foreach ($list as $evenement) {
 		?>
         <tr>
+		<td><div class="card-body text-center"><img src="images/<?php echo $evenement['img_eve']; ?>  "  width="100"    height="50"></div></td>
 		    <td><div class="card-body text-center"><?php echo $evenement['nom_eve']; ?></div></td>
 			<td><div class="card-body text-center"><?php echo $evenement['date_eve']; ?></div></td>
-			<td><div class="card-body text-center"><?php echo $evenement['lieu_eve']; ?></div></td>
+			<td><div class="card-body text-center" id ="lieu_eve"><?php echo $evenement['lieu_eve']; ?></div></td>
 			<td><div class="card-body text-center"><?php echo $evenement['duree_eve']; ?></div></td>
 			<td><div class="card-body text-center"><?php echo $evenement['association_ga']; ?></div></td>
 			<td><div class="card-body text-center"><?php echo $evenement['somme']; ?></div></td>
 			<td><div class="card-body text-center"><?php echo $evenement['nb_pt_eve']; ?></div></td>
             <td><div class="card-body text-center"><?php echo $evenement['maladie']; ?></div></td>
+			<td><div class="card-body text-center"><?php echo $evenement['note']; ?></div></td>
 			<td>
 		
 			<td>
@@ -338,7 +356,7 @@ $list = $evenementC->listevenements();
 				
 								
 
-				<div class="col-12 col-lg-6">
+				<div class="col-40 col-md-40 col-lg-55 col-xl-99 col-xxl-45 mx-auto">
 					<div class="card">
 						<div class="card-header">
 							<h5 class="card-title">Statistiques</h5>
@@ -352,19 +370,22 @@ $list = $evenementC->listevenements();
 					</div>
 				</div>
 				<script>
+					
+      
+		
 					document.addEventListener("DOMContentLoaded", function() {
 						//statistiques
 						new Chart(document.getElementById("chartjs-pie"), {
 							type: "pie",
 							data: {
-								labels: ["Social", "Search Engines", "Direct", "Other"],
+								labels: ["Tunis", "Sfax", "Sousse"],
 								datasets: [{
-									data: [260, 125, 54, 146],
+									data: [<?php   echo  $tunis = $evenementC->tunis(); ?>, <?php   echo  $sfax = $evenementC->sfax(); ?>, <?php   echo  $sousse = $evenementC->sousse(); ?>],
 									backgroundColor: [
 										window.theme.primary,
 										window.theme.warning,
-										window.theme.danger,
-										"#dee2e6"
+										window.theme.danger
+										
 									],
 									borderColor: "transparent"
 								}]
@@ -378,6 +399,7 @@ $list = $evenementC->listevenements();
 						});
 					});
 				</script>
+                   
 			</main> 
 
            

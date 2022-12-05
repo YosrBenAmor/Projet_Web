@@ -11,16 +11,7 @@ function verif() {
     var somme = document.forms["mayssa"]["somme"].value;
     var pt = document.forms["mayssa"]["nb_pt_eve"].value;
     var maladie = document.forms["mayssa"]["maladie"].value;
-   /* var prenomR = document.forms["clubForm"]["prenomR"].value;
-    var mail = document.forms["clubForm"]["mail"].value;
-    var Cmail = document.forms["clubForm"]["Cmail"].value;
-    var password = document.forms["clubForm"]["password"].value;
-    var nomC = document.forms["clubForm"]["nomC"].value;
-    
-    var NbM = document.forms["clubForm"]["NbM"].value;
-    var activities = document.querySelectorAll('input[name="act"]:checked');
-    var adhe = document.forms["clubForm"]["adhe"].value;
-*/
+  
 
     var errorNE = document.getElementById('nomER');
     var errorDate = document.getElementById('dateER');
@@ -30,16 +21,7 @@ function verif() {
     var errorsomme = document.getElementById('sommeER');
     var errorpt = document.getElementById('pointER');
     var errormal = document.getElementById('maladieER');
-  /*  var errorP = document.getElementById('errorPR');
-    var errorEmail = document.getElementById('errorMR');
-    var errorPass = document.getElementById('errorPass');
-    var errorNC = document.getElementById('errorNC');
-    
-    var errorNA = document.getElementById('errorNBM');
-    var errorCategorie = document.getElementById('errorCAT');
-    var errorActivities = document.getElementById('errorACT');
-    var errorADH = document.getElementById('errorADH');
-*/
+  
     
    if (nomE == "" ) 
    {
@@ -69,10 +51,7 @@ function verif() {
    {
     errorpt.innerHTML = "Veuillez entrer le nombre de point!";
    }
-   else if (maladie == "Sélectionner") 
-   {
-    errormal.innerHTML = "Au moins un type de maladie doit être identifié!";
-   }
+  
 
 else{
 
@@ -109,55 +88,7 @@ else{
   
 
 }
-/*
-   
-    if (mail == "") {
-        errorEmail.innerHTML = "Veuillez entrer votre email!";
 
-    }
-    else if (!mail.match('@esprit.tn')) {
-        errorEmail.innerHTML = "Veuillez entrer un email valid!";
-    }
-    else {
-        errorEmail.innerHTML = "";
-
-    }
-
-
-
-
-  
-    
-
-
-
-function changeAutre() {
-    var autre = document.forms["clubForm"]["desc"];
-    if (document.getElementById("autre").checked = true) {
-        autre.style.display = "";
-    }
-    else {
-        autre.style.display = "none";
-
-    }
-}
-
-function VerifEmail() {
-    var mail = document.forms["clubForm"]["mail"].value;
-    var Cmail = document.forms["clubForm"]["Cmail"].value;
-    var errorCR = document.getElementById('errorCR');
-
-    if (Cmail == "") {
-        errorCR.innerHTML = "Veuillez confirmer votre email!";
-    }
-    if (!(mail == Cmail)) {
-        errorCR.innerHTML = "Les deux mails ne sont pas identiques!";
-
-    } else {
-        errorCR.innerHTML = ""
-    }
-}
-*/
 function validateForm(e) {
     e.preventDefault();
     verif();

@@ -1,7 +1,11 @@
 <?php
 require_once('../Controller/ParticipationC.php');
+
 $participationC = new participationC();
 $list = $participationC->afficherParticipation();
+$id=80;
+
+
 ?>
 
 <!DOCTYPE HTML>
@@ -58,7 +62,8 @@ $list = $participationC->afficherParticipation();
 												<?php
 		foreach ($list as $participation) {
 		?>
-        
+        <td><div class="card-body text-center"><th class="text-center">NOM DU L'EVENEMENT : </th><?php   echo  $nom_eve = $participationC->recupererNom_eve($id); ?></div></td>
+		<td><div class="card-body text-center"><th class="text-center">NOMBRE DE POINTS À GAGNER : </th><?php   echo  $nb_pt_eve = $participationC->recupererPt_eve($id); ?></div></td>
 		<div class="card-body text-center"><th class="text-center">NOM DU PARTICIPANT : </th><?php echo $participation['nom_part']; ?></div>
 		<div class="card-body text-center"><th class="text-center">PRENOM DU PARTICIPANT : </th><?php echo $participation['prenom_part']; ?></div>
 		<div class="card-body text-center"><th class="text-center">AGE DU PARTICIPANT : </th><?php echo $participation['age_part']; ?></div>
@@ -77,7 +82,19 @@ $list = $participationC->afficherParticipation();
          }
         ?>
          </div>
-           
+		 
+		
+        
+		
+		    
+			
+			<hr>
+			<br>
+			
+			
+			
+			
+			
        </thead>
 											
 	   </div>

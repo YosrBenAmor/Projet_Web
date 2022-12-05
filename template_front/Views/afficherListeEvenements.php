@@ -1,13 +1,14 @@
 <?php
 require_once('../Controller/evenementC.php');
+
 $evenementC = new evenementC();
 $list = $evenementC->listevenements();
+$liste = $evenementC->listevenements();
 
-if (isset($_POST['evenement']) && isset($_POST['search']) ){
-$list = $evenementC->afficherParticipation($_POST['evenement']);
-}
+
 
 ?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -17,8 +18,11 @@ $list = $evenementC->afficherParticipation($_POST['evenement']);
 		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		
 	</head>
 	<body class="is-preload">
+	
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -58,20 +62,40 @@ $list = $evenementC->afficherParticipation($_POST['evenement']);
 										<h1>NOS ÉVÉNEMENTS</h1>
 									 </header>
 											
-									        <thead>
-												
+									 
+										<thead>
+										
+<br>
+													
 												<?php
 	                                           	foreach ($list as $evenement) {
 	                                        	?>
-        
-                                              <div class="card-body text-center"><?php echo $evenement['nom_eve']; ?>
-											  </div>
-                                                <?php
-                                                  }
-                                                 ?>
-                                              </div>
-											  <a href="afficherDetailsEvenements .php">Voir les détails</a>
-                                             </thead>
+												
+										<img src="images/<?php echo $evenement['img_eve']; ?>  "  width="284"    height="177">
+												
+                                        
+												<?php
+         }
+        ?>
+		<br>
+												<?php
+	                                           	foreach ($liste as $evenement) {
+	                                        	?>
+<?php echo " .................... ".$evenement['nom_eve']."..........."."...................."; ?>
+
+			
+												   <?php
+         }
+        ?>
+												
+										
+<br>
+                                              <br>
+											  <div class="col-md-3 col-sm-6 co-xs-12 text-center">  <a href="afficherDetailsEvenements .php">Voir les détails</a> </div>
+                                        </thead>
+
+									
+						       
 									
 	                            </div>
 							</section>
@@ -79,6 +103,7 @@ $list = $evenementC->afficherParticipation($_POST['evenement']);
 					</div>
 <br>
 <br>
+
 				<!-- Footer -->
 				<footer id="footer">
 					<div class="inner">

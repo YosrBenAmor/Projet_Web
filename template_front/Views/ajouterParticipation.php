@@ -4,12 +4,14 @@
 
     $error = "";
     $id=$_GET["id_eve"];
-
+	$id1=1;
     // create adherent
-    $participation = null;
+	$participationC = new participationC();
+	$participation = $participationC->recupererUser($id1);
+	
 
     // create an instance of the controller
-    $participationC = new participationC();
+   
     if (
         
 		
@@ -44,13 +46,14 @@
                 $_POST['age_part'],
                 $_POST['mail_part'],
                 $_POST['num_part'],
-				$id
+				$id,
+				$id1
                 
                
 
             );
             $participationC->ajouterParticipation($participation);
-           // header('Location:afficherListeParticipation.php');
+            header('Location:afficherListeParticipation.php');
         }
         else
             $error = "Missing information";
@@ -174,7 +177,7 @@
 									</div>
                                      <br>
 
-                        <input class="btn btn-success" type="submit" value="Envoyer"> <a href="afficherListeParticipation.php"></a> 
+                        <input class="btn btn-success" type="submit" value="Envoyer"> <a href="afficherListeParticipation.php?id_eve=<?php echo $participation['id_eve']; ?>" name="id_eve"></a> 
                    
                         <input type="reset" value="Annuler" >
                     

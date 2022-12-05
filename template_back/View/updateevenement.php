@@ -5,10 +5,6 @@ include '../Controller/evenementC.php';
 $error = "";
 $id=$_GET["id_eve"];
 
-// create evenement
-
-
-// create an instance of the controller
 $evenementC = new evenementC();
 
 $evenement = $evenementC->showevenement($id);
@@ -21,7 +17,10 @@ if (
     isset($_POST["association_ga"]) &&
     isset($_POST["somme"]) &&
     isset($_POST["nb_pt_eve"]) && 
-	isset($_POST["maladie"])
+	isset($_POST["maladie"]) &&
+	isset($_POST["img_eve"])&&
+	isset($_POST["note"])
+
     
 ) {
     if (
@@ -33,7 +32,10 @@ if (
         !empty($_POST["association_ga"]) &&
         !empty($_POST["somme"]) &&
         !empty($_POST["nb_pt_eve"]) &&
-        !empty($_POST["maladie"])
+        !empty($_POST["maladie"]) &&
+		!empty($_POST["img_eve"])&&
+		!empty($_POST["note"])
+
     ) {
         $evenement = new evenement(
             
@@ -44,7 +46,9 @@ if (
             $_POST['association_ga'],
             $_POST['somme'],
             $_POST['nb_pt_eve'],
-            $_POST['maladie']
+            $_POST['maladie'],
+			$_POST['img_eve'],
+			$_POST['note']
            
         );
         $evenementC->updateevenement($evenement,$id);
@@ -71,7 +75,9 @@ if (
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
+ 
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 	<style>
   .error{
     color: red;
@@ -309,9 +315,9 @@ if (
         
 
    
-        <form action="" method="POST" name="mayssa" onsubmit="return validateForm(event)">
+        <form action="" method="POST" name="mayssa" >
            
-        <button class="btn btn-warning"><a href="afficherListeEvenements.php">Retour à la liste des évenements</a></button>
+        <button class="btn btn-warning"><a href="Listevenements.php">Retour à la liste des évenements</a></button>
         
                           
                  
@@ -341,16 +347,23 @@ if (
 								<p id="dateER" class="error"></P>
                                 </div>
  
-                 <div class="card">
-				<div class="card-header">
+								<div class="card">
+								<div class="card-header">
 									<h5 class="card-title mb-0">LIEU</h5>
 								</div>
 								<div class="card-body">
-									<input type="text" class="form-control" placeholder="LIEU" id="lieu_eve" name="lieu_eve" value="<?php echo $evenement['lieu_eve']; ?>">
-								</div>
+									<select class="form-select mb-3" type="text" id="lieu_eve" name="lieu_eve" >
+                                       <option selected>Sélectionner </option>
+                                       <option>Tunis</option>
+                                       <option>Sfax</option>
+                                       <option>Sousse </option>
+		                               
+                                    </select>
+		                        </div>
 								<p id="lieuER" class="error"></P>
 							</div>
 
+							
                             <div class="card">
 								<div class="card-header">
 									<h5 class="card-title mb-0">DURÉE</h5>
@@ -407,16 +420,55 @@ if (
 		                               <option>L'hypertension artérielle</option>
                                     </select>
 		                        </div>
-								<p id="maladieER" class="error"></P>
+							</div>
+
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">IMAGE </h5>
+								</div>
+								<div class="card-body">
+								<input type="file" id="img_eve" name="img_eve" value="<?php echo $evenement['img_eve']; ?>">
+								</div>
 							</div>
                             
-
+							
+         <div class="rateyo" id= "note" value="<?php echo $evenement['note']; ?>"
+         
+         >
+         <i class="rateyo" data-value="1"></i>
+         <i class="rateyo" data-value="2"></i>
+         <i class="rateyo" data-value="3"></i>
+         <i class="rateyo" data-value="4"></i>
+         <i class="rateyo" data-value="5"></i>
+         </div>
+        
+        
+    <span class='result'></span>
+    <input type="hidden" name="note">
+ 
+    
+<br>
                 
                  <input class="btn btn-success" type="submit" value="Modifier"> 
                    
                         <input type="reset" value="Annuler" >
-                       
-        </form>
+					          
+        
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+ 
+<script>
+     $(function () {
+        $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
+            var note = data.rating;
+            $(this).parent().find('.score').text('score :'+ $(this).attr('data-rateyo-score'));
+            $(this).parent().find('.result').text('rating :'+ note);
+            $(this).parent().find('input[name=note]').val(note); //add rating value to input field
+        });
+    });
+ 
+</script>
+						</form>
         <footer class="footer">
 				<div class="container-fluid">
 					<div class="row text-muted">
