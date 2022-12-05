@@ -1,12 +1,18 @@
 <?php
 include '../Controller/UserC.php';
-$user = new UserC();
+$userC = new UserC();
 
 if (isset($_GET['label']) && !empty($_GET['label'])) {
-    $listeUsers = $user->afficheruser($_GET['label']);
+    $listeUsers = $userC->afficheruser($_GET['label']);
 } else {
-    $listeUsers = $user->afficherusers();
+    $listeUsers = $userC->afficherusers();
 }
+$nb_users = $userC -> count_user();
+$nb_u = array_values($nb_users)[0];
+$nb_admins = $userC -> count_admin();
+$nb_a = array_values($nb_admins)[0];
+
+
 ?>
 <html>
 
@@ -347,20 +353,116 @@ if (isset($_GET['label']) && !empty($_GET['label'])) {
 								</div>
 							</div>
 						</div>
+                        <script src="js/app.js"></script>
 
-						<div class="col-12 col-lg-6">
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Line chart
+			new Chart(document.getElementById("chartjs-line"), {
+				type: "line",
+				data: {
+					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+					datasets: [{
+						label: "useres",
+						fill: true,
+						backgroundColor: "transparent",
+						borderColor: window.theme.primary,
+						data: [<?php
+                                for ($i = 1; $i <= 11; $i++) {
+                                $countmonth = $userC -> count_by_month($i);
+                                if ($countmonth!=NULL){
+                                $nb_m= array_values($countmonth)[1];
+                                echo $nb_m .',';
+                                }else {echo '0 , ';}
+                            } $countmonth12 = $userC -> count_by_month(12);
+                            if ($countmonth12!=NULL){
+                                $nb_m= array_values($countmonth)[1];
+                                echo $nb_m ;
+                                }else {echo '0';}
+                            ?>]
+					}]
+				},
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					tooltips: {
+						intersect: false
+					},
+					hover: {
+						intersect: true
+					},
+					plugins: {
+						filler: {
+							propagate: false
+						}
+					},
+					scales: {
+						xAxes: [{
+							reverse: true,
+							gridLines: {
+								color: "rgba(0,0,0,0.05)"
+							}
+						}],
+						yAxes: [{
+							ticks: {
+								stepSize: 500
+							},
+							display: true,
+							borderDash: [5, 5],
+							gridLines: {
+								color: "rgba(0,0,0,0)",
+								fontColor: "#fff"
+							}
+						}]
+					}
+				}
+			});
+		});
+	</script>
+
+<div class="col-12 col-lg-6">
 							<div class="card">
 								<div class="card-header">
-									<h5 class="card-title">Bar Chart</h5>
-									<h6 class="card-subtitle text-muted">A bar chart provides a way of showing data values represented as vertical bars.</h6>
+									<h5 class="card-title">Pie Chart</h5>
+									<h6 class="card-subtitle text-muted">Pie charts are excellent at showing the relational proportions between data.</h6>
 								</div>
 								<div class="card-body">
-									<div class="chart">
-										<canvas id="chartjs-bar"></canvas>
+									<div class="chart chart-sm">
+										<canvas id="chartjs-pie"></canvas>
 									</div>
 								</div>
 							</div>
 						</div>
+					</div>
+
+				</div><script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Pie chart
+			new Chart(document.getElementById("chartjs-pie"), {
+				type: "pie",
+				data: {
+					labels: ["admin", "user"],
+					datasets: [{
+						data: [<?php echo $nb_a; ?> , <?php echo $nb_u ;?>],
+						backgroundColor: [
+							window.theme.primary,
+							window.theme.warning,
+						
+						],
+						borderColor: "transparent"
+					}]
+				},
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					}
+				}
+			});
+		});
+	</script>
                                     </div>
                                 </div>
                             </div>

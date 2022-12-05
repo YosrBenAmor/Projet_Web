@@ -15,8 +15,8 @@
         isset($_POST["password"]) &&
         isset($_POST["adresse"]) && 
         isset($_POST["email"]) && 
-        isset($_POST["tel"])  
-        //isset($_POST["usad"])
+        isset($_POST["tel"]) 
+       // isset($_POST["usad"])
     ) {
         if (
             !empty($_POST['nom']) &&
@@ -159,21 +159,14 @@
 											<input type="text" name="adresse" id="adresse" />
 											<p id="adER" class="error"></P>
 										</div>
-										<tr>
-										<div class="field">
-                                        <label for="usad">admin?:
-                                        </label>
-                                          </td>
-                                          <td>
-										  <input type="checkbox" >
-                                        </td>
-                                        </tr>              
+										
                                         <tr>
 										</div>
 										<div class="field half text-right">
 											<ul class="actions">
 												<input type="submit" value="creer compte" class="primary" />
 											</ul>
+											vous avez deja un compte? <a href="login.php">se connecter</a>
 										</div>
 									</div>
 								</form>

@@ -1,43 +1,47 @@
+
+
 <?php
    include_once '../Model/user.php';
     include_once '../Controller/userC.php';
+	
 
-    // create user
-    $user = null;
+// create user
+$user = null;
 
-    // create an instance of the controller
-    $userC = new userC();
-    if (
+// create an instance of the controller
+$userC = new userC();
+if (
+	isset($_POST["email"]) 
+) {
 
-        isset($_POST["password"]) &&
-        isset($_POST["email"]) 
-    ) {
-       
-		if (
+	if(isset($_POST['button_pressed']))
+	{
+		$to    = $_POST['email'];
+		$subject = 'Mot de passe oublié';
+		
+		$headers = 'From: lefi.amine@esprit.tn' . "\r\n" .
+			'Reply-To: lefi.amine@esprit.tn' . "\r\n" .
+			'X-Mailer: PHP/' . phpversion();
 
-            !empty($_POST["password"]) && 
-            !empty($_POST["email"]) 
-        ) {
-			$password = $_POST["password"];
-			$email = $_POST["email"] ; 
-		$result = $userC->recupereruserByemail($email,$password);
-		if($result == null)
-			$error ="Email et/ou mot de passe est incorrect";
-		else{
+		ini_set('SMTP', "server.com");
+		ini_set('smtp_port', "25");
+		ini_set('sendmail_from', "lefi.amine@esprit.tn");
+
+		$result = $userC->recupereruserByemailonly($to);
+		$pass = array_values($result)[0];
+		if($pass == null){
+			echo 'Verifiez votre email';
+			}
+		else {
 			
-				session_start();
-                	//$_SESSION['nom'] = $result->getNom();
-			    	header('Location: afficherListeUsers.php');}
 			
+			$message = 'votre mot de passe est : '.$pass;
+			mail($to, $subject, $message, $headers);
+			echo 'Email envoyé !';
+			}
 
-			$_SESSION['msg'] = "vous etes connecté ! yay !!!";
-           // header('Location:afficherListeUsers.php');
-        }
-        /*else
-            $error = "Veuillez verifier votre email ou mot de passe";*/
-    }
-
-
+	}
+}
 
     
 ?>
@@ -94,11 +98,20 @@
 						<div class="inner">
 							<section>
 								<header class="major">
-									<h2>Commencez a troquer !</h2>
-									<h5>Creer un compte</h5>
+									<h2>mot de passe oublié :c</h2>
+									<h5>recupérer</h5>
 								</header>
 
-								
+								<form action="" method="post">
+								<div class="field">
+											<label for="email">email</label>
+											<input type="text" name="email" id="email" />
+											<p id="emailER" class="error"></P>
+										</div>
+								<input type="submit" value="envoyer un mail" />
+								<input type="hidden" name="button_pressed" value="1" />
+								</form>
+				<!--				
 				<form action="" method="POST"  name="amin" onsubmit="return validateForm(event)" >
 									<div class="fields">
 
@@ -107,36 +120,15 @@
 											<input type="text" name="email" id="email" />
 											<p id="emailER" class="error"></P>
 										</div>
-										<div class="field">
-											<label for="password">mot de passe</label>
-											 <input type="text" value="" name="password" id="password"/><br>
-											<input type="checkbox" onclick="myFunction()">Show Password
-											
-											<script>
-											function myFunction() {
-											  var x = document.getElementById("password");
-											  if (x.type === "password") {
-												x.type = "text";
-											  } else {
-												x.type = "password";
-											  }
-											}
-											</script>
-											
-											
-										</div>
-										<p id="passER" class="error"></P>
+
 								
 
 										<div class="field half text-right">
 											<ul class="actions">
-												<li><input type="submit" value="se connecter" class="primary" /></li>
+												<li><input type="submit" name="forgotpass" value="envoyer" class="primary" /></li>
 																	
 													</ul>
-													<p>
-												vous n'avez pas un compte? <a href="ajouterUser.php">creer un compte</a>
-												mot de passe oublié? <a href="forgot.php">recupérer votre mot de passe </a>
-										</p>	
+													<p>vous recevrez un email contenant votre mdp</P>
 										</div>
 									</div>
 								</form>
@@ -146,7 +138,8 @@
 					
 
 
-				<!-- Footer -->
+-->
+						<!-- Footer -->
 					<footer id="footer">
 						<div class="inner">
 							<ul class="icons">

@@ -9,6 +9,7 @@
 		private ?string $email=null;
 		private ?string $tel=null;
 		private ?int $usad=null;
+
 		
 		function __construct($id, $nom, $prenom,$pts, $password, $adresse, $email,  $tel ,$usad){
 			$this->id=$id;
@@ -20,6 +21,7 @@
 			$this->email=$email;
 			$this->tel=$tel;
 			$this->usad=$usad;
+		
 		}
 		function getNom(){
 			return $this->nom;
@@ -70,7 +72,7 @@
 		function setTel(string $tel){
 			$this->tel=$tel;
 		}
-		function setdateinscription(string $usad){
+		function setUsad(string $usad){
 			$this->usad=$usad;
 		}
 		
