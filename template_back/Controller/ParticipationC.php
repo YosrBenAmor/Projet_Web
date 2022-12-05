@@ -1,10 +1,10 @@
 <?php
-include '../config.php';
-include '../Model/Participation.php';
+require '../config.php';
+require '../Model/Participation.php';
+require '../Model/evenement.php';
 
 class participationC
 {
-	
 	function afficherParticipation()
 	{
 		$sql = "SELECT * FROM participation";
@@ -30,22 +30,22 @@ class participationC
 			die('Erreur:' . $e->getMeesage());
 		}
 	}
-	
 	function ajouterParticipation($participation)
 	{
-		$sql = "INSERT INTO participation (id_part, nom_part , prenom_part, age_part, mail_part, num_part ,id_eve  ) 
-			VALUES (:id_part, :nom_part, :nom_part, :age_part, :mail_part, :num_part , :id_eve)";
+		$sql = "INSERT INTO participation ( nom_part , prenom_part, age_part, mail_part, num_part ,id_eve  ,id_us) 
+			VALUES ( :nom_part, :prenom_part, :age_part, :mail_part, :num_part , :id_eve , :id_us)";
 		$db = config::getConnexion();
 		try {
 			$query = $db->prepare($sql);
 			$query->execute([
-				'id_part' => $participation->getid_part(),
+				
 				'nom_part' => $participation->getNom_part(),
 				'prenom_part' => $participation->getPrenom_part(),
 				'age_part' => $participation->getAge_part(),
 				'mail_part' => $participation->getMail_part(),
 				'num_part' => $participation->getNum_part(),
 				'id_eve' => $participation->getId_eve(),
+				'id_us' => $participation->getId_us(),
 
 				
 
@@ -54,7 +54,10 @@ class participationC
 			echo 'Erreur: ' . $e->getMessage();
 		}
 	}
+   
 	
+
+
 	function recupererParticipation($id_part)
 	{
 		$sql = "SELECT * from participation where id_part = $id_part";
@@ -100,5 +103,48 @@ class participationC
             $e->getMessage();
         }
 }
+function recupererUser($id_us)
+	{
+		$sql = "SELECT * from participation where id_us = $id_us";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
 
+            $participation = $query->fetch();
+            return $participation;
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+	}
+	function recupererNom_eve($id_eve)
+	{
+		$sql = "SELECT nom_eve as 'nom_eve' from evenement join participation on (evenement.id_eve)=(participation.id_eve);";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $participation = $query->fetch();
+            return $participation['nom_eve'];
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+	}
+
+	function recupererPt_eve($id_eve)
+	{
+		$sql = "SELECT nb_pt_eve as 'nb_pt_eve' from evenement join participation on (evenement.id_eve)=(participation.id_eve);";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $participation = $query->fetch();
+            return $participation['nb_pt_eve'];
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+	}
+	
 }

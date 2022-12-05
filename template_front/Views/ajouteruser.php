@@ -1,50 +1,61 @@
 <?php
-    include_once '../Controller/userC.php';
-	
+    
+    require_once('../Controller/userC.php');
+
     $error = "";
-	//$id=$_GET["id_ass"];
-   
+    //$id=$_GET["id_eve"];
 
+    // create adherent
+    $user = null;
 
+    // create an instance of the controller
     $userC = new userC();
     if (
         
-        isset($_POST["nom_us"]) &&  
-        isset($_POST["prenom_us"]) && 
-        isset($_POST["mdp_us"]) &&    
-        isset($_POST["mail_us"])
-		 
+		
+		isset($_POST["nom_us"]) &&		
+        isset($_POST["prenom_us"]) &&
+		isset($_POST["mail_us"]) && 
+        isset($_POST["mdp_us"]) 
+	
+		
+       
 
     ) 
-     
-    {
+     {
         if (
-            
-            !empty($_POST["nom_us"]) &&  
-            !empty($_POST["prenom_us"]) && 
-            !empty($_POST["mdp_us"]) &&    
-            !empty($_POST["mail_us"]) 
+           
 			
-		
+			!empty($_POST["nom_us"]) &&
+            !empty($_POST["prenom_us"]) && 
+			!empty($_POST["mail_us"]) && 
+            !empty($_POST["mdp_us"]) 
+			
+            
+          
+
         ) {
             $user = new user(
+             
+				$_POST['nom_us'],
+                $_POST['prenom_us'],
+                $_POST['mail_us'],
+                $_POST['mdp_us']
+				//$id
+                
                
-            $_POST['nom_us'],  
-            $_POST['prenom_us'],
-            $_POST['mdp_us'] ,
-            $_POST['mail_us']
-			
-			
+
             );
             $userC->adduser($user);
-           // header('Location:afficheruser.php');
+           // header('Location:afficherListeuser.php');
         }
         else
             $error = "Missing information";
     }
 
     
-?>            
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -54,7 +65,6 @@
 		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		 
 	</head>
 	<body class="is-preload">
 
@@ -80,7 +90,7 @@
 		                
 		                <li> <a href="Evenement.html">Authors</a> </li>
 
-		               
+		                <li ><a href="Dons.html">Dons</a></li>
             		</ul>
 				</nav>
 
@@ -93,44 +103,33 @@
 						<div class="inner">
 							<section>
 								<header class="major">
-									<h4>Créez votre compte</h4>
+									<h2>Commencez a troquer !</h2>
+									<h5>Creer un compte</h5>
 								</header>
 
-								<form  method="POST"  action="">
+								<form method="post" action="">
 									<div class="fields">
 										<div class="field half">
-
-											<div class="field">
-												<label for="nom_us">Nom</label>
-												<input type=text class ="form-control" name="nom_us" id="nom_us"/>
-												
-											</div>
+											<label for="name">Nom</label>
+											<input type="text" name="nom_us" id="nom_us" required/>
+										</div>
+										<div class="field half">
+											<label for="prenom">Prenom</label>
+											<input type="text" name="prenom_us" id="prenom_us" required/>
+										</div>
+										<div class="field">
+											<label for="email">email</label>
+											<input type="email" name="mail_us" id="mail_us" />
+										</div>
+										<div class="field">
+											<label for="mot de passe">mot de passe</label>
+											 <input type="password" value="" id="mdp_us" name="mdp_us"><br>
+																	
 											
-											<div class="field">
-												<label for="prenom_us">Prenom</label>
-												<input type=text  class ="form-control" name="prenom_us" id="prenom_us"/>
-												
-											</div>
-											<div class="field">
-												<label for="mdp_us">Mot de passe</label>
-												<input type=text  class ="form-control"name="mdp_us" id="mdp_us"/>
-												
-											</div>
-						
-											<div class="field">
-												<label for="email_user">Èmail </label>
-												<input type=text  class ="form-control" name="mail_us" id="mail_us"/>
-												
-											</div>
-											
-
-											
-										<br>
-										<br>
-										<br>
+										
 										<div class="field half text-right">
-											<ul class="actions"><br>
-												<li><input class="btn btn-success" type="submit" value="Se Connecter"  /></li>
+											<ul class="actions">
+												<li><input type="submit" value="creer compte" class="primary" /></li>
 											</ul>
 										</div>
 									</div>
