@@ -7,10 +7,10 @@
 		private ?string $mail_part=null;
 		private ?string $num_part=null;
 		private ?int $id_eve=null;
-		
+
 
 		
-		function __construct( $nom_part, $prenom_part, $age_part, $mail_part, $num_part ,$id_eve){
+		public function __construct( $nom_part, $prenom_part, $age_part, $mail_part, $num_part ,$id_eve ){
 			
 			$this->nom_part=$nom_part;
 			$this->prenom_part=$prenom_part;
@@ -43,6 +43,7 @@
 			return $this->id_eve;
 		}
 		
+		
 
 		function setNom_part(string $nom_part){
 			$this->nom_part=$nom_part;
@@ -68,5 +69,6 @@
 			$this->id_eve=$id_eve;
 			return $this;
 		}
+		
 		
 	}
