@@ -1,6 +1,6 @@
 <?php
-include '../../controller/reservationC.php';
-
+/*include '../../controller/reservationC.php';*/
+require_once('../../Controller/reservationC.php');
 
 $reservationC = new reservationC();
 if (isset($_GET['label']) && !empty($_GET['label'])) {
@@ -9,6 +9,7 @@ if (isset($_GET['label']) && !empty($_GET['label'])) {
  else {
     $Listereservation= $reservationC->afficherListereservations();
 }
+
 ?>
 <html>
 
@@ -328,7 +329,7 @@ if (isset($_GET['label']) && !empty($_GET['label'])) {
 			</nav>
 			<div>
         <form action="" method="GET">
-            <input type="text" name="label" id="label" placeholder="donner le ID dutulisateur">
+            <input type="text" name="label" id="label" placeholder="coordonnées de l'utulisateur">
             <input type="submit" value="Search">
         </form>
     </div>
@@ -517,8 +518,17 @@ if (isset($_GET['label']) && !empty($_GET['label'])) {
 								</li>
 								<li class="list-inline-item">
 									<a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
+								
 								</li>
 							</ul>
+
+
+							Lefi Amine
+15:28 (il y a 0 minute)
+À moi
+
+
+
 						</div>
 					</div>
 				</div>

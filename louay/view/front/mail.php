@@ -1,45 +1,28 @@
-<!-- ?php
-		if(isset($_POST['submit'])){
-			$to='louayabidi12356@gmail.com';
-			$sujet='test mail en local';
-			$texte=$_POST['texte'];
-			$header='From : test@gmail.com';
-			mail($to,$sujet,$texte,$header);
-		}
-
-?>
-	>
 <?php
-include "../../view/addreservation.php";
-include "../../controller/reservationC.php";
+if (isset($_POST['mailform'])) {
+        $header = "MIME-Version: 1.0 \r\n ";
+        $header .= 'From: "me@example.com"<lou.abidi00@gmail.com>' . "\n";
+        $header .= 'content-type:text/html; charset ="uft-8"' . "\n";
+        $header .= 'content-Transfer-Encoding: 8bit ';
 
- 
-    ini_set('display_errors',1);
- 
-    /*error_reporting(E_ALL);*/
- 
-    $from = "louayabidi123456@gmail.com";
- 
-    $to = "louay.abidi@esprit.tn";
- 
-    $sujet = "reservation bien reçu  !";
- 
-    $message = " votre réclamation est en cours de traitement ! Merci pour votre fidélité !";
-    
-    
-     
- 
-    $headers = "From:".$from;
+        $message = '
+<html>
+<body>
+<div align ="centre ">
+   
+      j\'ai envoyer un mail 
 
 
-if(mail($to,$sujet,$message,$headers))
-{
-        //echo "L'email a bien été envoyé.";
-       header('Location: afficherListereservation.php');
+      </div>
+
+</body> 
+</html>
+';
+
+        mail("louay.abidi@esprit.tn ", "salue test ", $message, $header);
 }
-else
-{
-        echo "Une erreur c'est produite lors de l'envois de l'email.";
-}
-        
 ?>
+<form method="POST" action="">
+<input type ="submit" value ="recevoire un mail " name="mailform"/>
+
+</form>

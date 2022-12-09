@@ -18,6 +18,10 @@ class reservationC
 	function afficherreservation($libelle)
     {
         $sql = "SELECT * FROM reservation WHERE idReservation LIKE '%" . $libelle . "%'";
+		$sql = "SELECT * FROM reservation WHERE lastName LIKE '%" . $libelle . "%'";
+		$sql = "SELECT * FROM reservation WHERE firstName LIKE '%" . $libelle . "%'";
+		/*$sql = "SELECT * FROM reservation WHERE phonenumber LIKE '%" . $libelle . "%'";
+		$sql = "SELECT * FROM reservation WHERE reff LIKE '%" . $libelle . "%'";*/
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -61,31 +65,8 @@ class reservationC
 			echo 'Erreur: ' . $e->getMessage();
 		}
 	}
-	function modifieradherent($adherent, $idreservation)
-	{
-		try {
-			$db = config::getConnexion();
-			$query = $db->prepare(
-				'UPDATE adherent SET 
-						firstname= :firstname, 
-						lastname= :lastname, 
-						address= :address, 
-						phonenumber= :phonenumber, 
-						reff= :reff
-					WHERE idreservation= :idreservation'
-			);
-			$query->execute([
-				'firstname' => $adherent->getfirstname(),
-				'lastname' => $adherent->getlastname(),
-				'address' => $adherent->getaddress(),
-				'phonenumber' => $adherent->getphonenumber(),
-				'reff' => $adherent->getreff(),
-				'idreservation' => $idreservation
-			]);
-			echo $query->rowCount() . " records UPDATED successfully <br>";
-		} catch (PDOException $e) {
-			$e->getMessage();
-		}
-	}
+
+	
+
 	
 }

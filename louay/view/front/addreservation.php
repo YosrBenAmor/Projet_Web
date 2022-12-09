@@ -66,10 +66,10 @@ if (
 <table cellpadding="2" width="100%">
 	<tr>
 
-		<td align="center"><a href="../../../index.html">Home</a></td>
-		<td align="center"><a href="../../../libs/libraries.htm">events</a></td>
-		<td align="center"><a href="http://www.boost.org/users/people.html">donation</a></td>
-		<td align="center"><a href="http://www.boost.org/users/faq.html">produits</a></td>
+		<td align="center"><a href="http://localhost:8080/projet%20web/view/front/index.html">Home</a></td>
+		<td align="center"><a href="http://localhost:8080/projet%20web/view/front/Evenement.html">events</a></td>
+		<td align="center"><a href="http://localhost:8080/projet%20web/view/front/Dons.html">donation</a></td>
+		<td align="center"><a href="http://localhost:8080/projet%20web/view/front/about-us.html">produits</a></td>
 		<td align="center"><a href="../../../more/index.htm">More</a></td>
 
 

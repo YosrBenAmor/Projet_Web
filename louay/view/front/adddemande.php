@@ -39,7 +39,7 @@ if (
 		);
 
 		$demandeC->adddemande($demande);
-		header('Location: afficherListedemande.php');
+		//header('Location: afficherListedemande.php');
 	} else
 		$error = "Missing information";
 }
@@ -55,7 +55,11 @@ if (
 		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		
+		<style>
+  .error{
+    color: red;
+}
+</style>
 
 <script type="text/javascript" src="controle.js"></script>
 	</head>
@@ -111,37 +115,41 @@ if (
 									<h2> votre demande </h2>
 								</header>
 								<fieldset>
-								<form action="" method="POST"  name="amin" onsubmit="return validateForm(event)" >
+								<form action=" " method="POST"  name="louay" onsubmit="return validateForm(event)" >
 									<div class="fields">
 										<div class="field half">
 											<label for="name">Name</label>
 											<input type="text" name="name" id="name" />
 											<p id="errorNR" class="error"></p>
-											
 										</div>
+										
 										<div class="field half">
 											<label for="mdp">Mdp</label>""
 											<input type="text" name="mdp" id="mdp" />
 											<p id="errorPass" class="error"></p>
 
 										</div>
+										
 									</div>
 									<div class="field half">
 										<label for="email">Email</label>
 										<input type="text" name="email" id="email" />
 										<p id="errorMR" class="error"></p>
 									</div>
+									
 									</fieldset>
 									<div class="field half">
 										<label for="reffd">reffd</label>
 										<input type="text" name="reffd" id="reffd" />
 										<p id="  adlER" class="error"></p>
 									</div>
+									
 									<div class="field half">
 										<label for="telp">Telp</label>
 										<input type="text" name="telp" id="telp" />
 										<p id=" telpER" class="error"></p>
 										</div>
+										
 										<h3>en attente à votre reponse</h3>
                                             <p id="status_field" class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
                                                 <label class="" for="status">status <abbr title="required" class="required">*</abbr>
@@ -156,7 +164,8 @@ if (
                                             </p>
 									
 										<div class="field half text-right">
-										<input type="submit" value="envoyer"><br>
+										
+                                       <input  type="submit" value="envoyer"><br>
 
 						<button><a href="afficherListedemande.php">Retour à la liste des demandes</a></button>
 						<hr>

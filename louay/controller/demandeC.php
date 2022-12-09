@@ -46,19 +46,38 @@ class demandeC
 			echo 'Erreur: ' . $e->getMessage();
 		}
 	}
-	public function afficherreservation($idreservation){
-	try {
-		$pdo =getConnexion();
-		$query = $pdo->prepare(
-		'SELECT * FROM reservation where demande = :id '	
-		);
-		$query->execute([
-			'id' => $iddemande
-		]);
-			return $query->fetchAll();
-		} catch (PDOException $e) {
-			$e->getMessage();
-		}
-	}
+	
+	function count_accepter()
+    {
+        $sql = "SELECT COUNT(*)  from demande where status != 'vous avez acceptez la reseration' ";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $nb = $query->fetch();
+            
+            return $nb;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
+	function count_refuser()
+    {
+        $sql = "SELECT COUNT(*)  from demande where status != 'vous avez refusez la reseration' ";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $nb = $query->fetch();
+            
+            return $nb;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
 	}
 

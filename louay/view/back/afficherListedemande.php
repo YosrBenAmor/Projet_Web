@@ -4,6 +4,11 @@ include '../../controller/demandeC.php';
 
 $demandeC = new demandeC();
 $listedemande = $demandeC->afficherListedemande();
+
+$nb_accepter = $demandeC -> count_accepter();
+$nb_a = array_values($nb_accepter)[0];
+$nb_refuser = $demandeC -> count_refuser();
+$nb_r = array_values($nb_refuser)[0];
 ?>
 <html>
 
@@ -492,9 +497,52 @@ $listedemande = $demandeC->afficherListedemande();
 					<div class="row text-muted">
 						<div class="col-6 text-start">
 							<p class="mb-0">
-								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin
-										Template</strong></a> &copy;
+								
 							</p>
+							<div class="col-12 col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">Pie Chart</h5>
+                                    <h6 class="card-subtitle text-muted"> sattistique</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart chart-sm">
+                                        <canvas id="chartjs-pie"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+	<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Pie chart
+            new Chart(document.getElementById("chartjs-pie"), {
+                type: "pie",
+                data: {
+                    labels: ["demandea accepter", "demande refuser"],
+                    datasets: [{
+                        data: [<?php echo $nb_r; ?> , <?php echo $nb_a ;?>],
+                        backgroundColor: [
+                            window.theme.primary,
+                            window.theme.warning,
+                        
+                        ],
+                        borderColor: "transparent"
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    legend: {
+                        display: false
+                    }
+                }
+            });
+        });
+    </script>
+	<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin
+										Template</strong></a> &copy;
 						</div>
 						<div class="col-6 text-end">
 							<ul class="list-inline">
@@ -517,6 +565,7 @@ $listedemande = $demandeC->afficherListedemande();
 			</footer>
 		</div>
 	</div>
+	
 
 	<script src="js/app.js"></script>
 
