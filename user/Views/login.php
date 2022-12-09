@@ -12,7 +12,8 @@
         isset($_POST["password"]) &&
         isset($_POST["email"]) 
     ) {
-        if (
+       
+		if (
 
             !empty($_POST["password"]) && 
             !empty($_POST["email"]) 
@@ -134,6 +135,7 @@
 													</ul>
 													<p>
 												vous n'avez pas un compte? <a href="ajouterUser.php">creer un compte</a>
+												mot de passe oublié? <a href="forgot.php">recupérer votre mot de passe </a>
 										</p>	
 										</div>
 									</div>

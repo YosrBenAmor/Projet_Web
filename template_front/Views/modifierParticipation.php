@@ -6,7 +6,8 @@ $error = "";
 
 // create participation
 
-$id=$_GET["id_part"];
+$id=$_GET["id_eve"];
+	$id1=1;
 
 
 // create an instance of the controller
@@ -36,7 +37,9 @@ if (
                 $_POST['age_part'],
                 $_POST['mail_part'],
                 $_POST['num_part'],
-				null
+				$id,
+				$id1
+				
 				
         );
 	

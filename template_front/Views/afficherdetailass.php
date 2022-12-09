@@ -30,9 +30,9 @@ $list = $associationC->listassociation();
 				<!-- Menu -->
 				<nav id="menu">
 					<ul class="links">
-		                <li> <a href="index.html">Home </a> </li>
+		                <li> <a href="index.php">Home </a> </li>
 
-		                <li> <a href="blog.html">Blog</a> </li>
+		              
 
 		                <li> <a href="about-us.html">Catégorie</a> </li>
 		                
@@ -58,6 +58,7 @@ $list = $associationC->listassociation();
                                                 foreach ($list as $association) 
                                                 {
                                                 ?>
+			<div class="card-body text-center"><th class="card-body text-center"></th> <img src="images/<?php echo $association['img_ass']; ?>  "  width="250"    height="250"></div>
         <div class="card-body text-center"><th class="card-body text-center">NOM D'ASSOCIATION : </th><?php echo $association['nom_ass']; ?></div>
          <div class="card-body text-center"><th class ="card-body text-center"> DATE DE FONDATION :<?php echo $association['datefondation']; ?></div>                                             
          <div class="card-body text-center"><th class="card-body text-center">OBJECTIF D'ASSOCIATION :</th><?php echo $association['objectif_ass']; ?></div>

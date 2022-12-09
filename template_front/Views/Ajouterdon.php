@@ -79,9 +79,8 @@
 				<!-- Menu -->
 				<nav id="menu">
 					<ul class="links">
-		                <li> <a href="index.html">Home </a> </li>
+		                <li> <a href="index.php">Home </a> </li>
 
-		                <li> <a href="blog.html">Blog</a> </li>
 
 		                <li> <a href="about-us.html">About Us</a> </li>
 		                
@@ -115,7 +114,8 @@
 											
 											<div class="field">
 												<label for="img_don">IMAGE DU DON</label>
-												<input type=text  class ="form-control" name="img_don" id="img_don"/>
+												<input type="file" class="form-control"  id="img_don" name="img_don">
+												 
 												
 											</div>
 											<div class="field">

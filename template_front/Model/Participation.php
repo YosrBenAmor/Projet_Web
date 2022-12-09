@@ -7,10 +7,10 @@
 		private ?string $mail_part=null;
 		private ?string $num_part=null;
 		private ?int $id_eve=null;
-		
+		private ?int $id_us=null;
 
 		
-		public function __construct( $nom_part, $prenom_part, $age_part, $mail_part, $num_part ,$id_eve){
+		public function __construct( $nom_part, $prenom_part, $age_part, $mail_part, $num_part ,$id_eve ,$id_us){
 			
 			$this->nom_part=$nom_part;
 			$this->prenom_part=$prenom_part;
@@ -18,7 +18,7 @@
 			$this->mail_part=$mail_part;
 			$this->num_part=$num_part;
 			$this->id_eve=$id_eve;
-			
+			$this->id_us=$id_us;
 		}
 		
 		function getId_part(){
@@ -41,6 +41,9 @@
 		}
 		function getId_eve(){
 			return $this->id_eve;
+		}
+		function getId_us(){
+			return $this->id_us;
 		}
 		
 
@@ -66,6 +69,10 @@
 		}
 		function setId_eve(string $id_eve){
 			$this->id_eve=$id_eve;
+			return $this;
+		}
+		function setId_us(string $id_us){
+			$this->id_us=$id_us;
 			return $this;
 		}
 		

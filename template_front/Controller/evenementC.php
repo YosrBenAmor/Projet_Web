@@ -32,8 +32,8 @@ class evenementC
 
     function addevenement($evenement)
     {
-        $sql = "INSERT INTO evenement  (id_eve, nom_eve, date_eve, lieu_eve, duree_eve, association_ga ,somme ,nb_pt_eve,maladie)
-        VALUES (:id_eve, :nom_eve, :date_eve, :lieu_eve, :duree_eve, :association_ga ,:somme ,:nb_pt_eve,:maladie)";
+        $sql = "INSERT INTO evenement  (id_eve, nom_eve, date_eve, lieu_eve, duree_eve, association_ga ,somme ,nb_pt_eve,maladie , img_eve ,note)
+        VALUES (:id_eve, :nom_eve, :date_eve, :lieu_eve, :duree_eve, :association_ga ,:somme ,:nb_pt_eve,:maladie , :img_eve , :note)";
         $db = config::getConnexion();
         try {
             
@@ -48,6 +48,8 @@ class evenementC
 				'somme' => $evenement->getSomme(),
 				'nb_pt_eve' => $evenement->getNb_pt_eve(),
 				'maladie' => $evenement->getMaladie(),
+                'img_eve' => $evenement->getImg_eve(),
+                'note' => $evenement->getNote(),
 				
                 
             ]);
@@ -69,7 +71,9 @@ class evenementC
 						association_ga= :association_ga,
 						somme= :somme, 
 						nb_pt_eve= :nb_pt_eve, 
-						maladie= :maladie
+						maladie= :maladie,
+                        img_eve= :img_eve,
+                        note= :note
                     
                 WHERE id_eve= :id_eve'
             );
@@ -82,7 +86,31 @@ class evenementC
 				'association_ga' => $evenement->getAssociation_ga(),
 				'somme' => $evenement->getSomme(),
 				'nb_pt_eve' => $evenement->getNb_pt_eve(),
-				'maladie' => $evenement->getMaladie()
+				'maladie' => $evenement->getMaladie(),
+                'img_eve' => $evenement->getImg_eve(),
+                'note' => $evenement->getNote()
+                
+            ]);
+            echo $query->rowCount() . " records UPDATED successfully <br>";
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
+
+    function update($evenement, $id)
+    {
+        try {
+            $db = config::getConnexion();
+            $query = $db->prepare(
+                'UPDATE evenement SET 
+                        nom_eve= :nom_eve
+						
+                    
+                WHERE id_eve= :id_eve'
+            );
+            $query->execute([
+                'id_eve' => $id,
+                'nom_eve' => $evenement->getNom_eve()
 				
                 
             ]);
@@ -108,9 +136,69 @@ class evenementC
     }
 
 
+    function search_nor($attribut)
+    {
+        $sql = "SELECT * FROM evenement WHERE nom_eve LIKE '%" . $attribut . "%' OR  lieu_eve  LIKE '%" . $attribut . "%' ";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
 
+            $association = $query->fetchAll();
+            return $association;
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
 
-   
+    function tunis()
+    {  
+        
+        $sql = "SELECT count(*) AS nb FROM evenement WHERE lieu_eve = 'tunis'";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $evenement = $query->fetch();
+            return $evenement['nb'];
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
+
+    function sfax()
+    {  
+        
+        $sql = "SELECT count(*) AS nb FROM evenement WHERE lieu_eve = 'sfax'";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $evenement = $query->fetch();
+            return $evenement['nb'];
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
+    
+    function sousse()
+    {  
+        
+        $sql = "SELECT count(*) AS nb FROM evenement WHERE lieu_eve = 'sousse'";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $evenement = $query->fetch();
+            return $evenement['nb'];
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
+
 
 
 }

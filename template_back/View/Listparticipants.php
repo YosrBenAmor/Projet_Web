@@ -2,6 +2,11 @@
 include '../Controller/ParticipationC.php';
 $participationC = new participationC();
 $list = $participationC->afficherParticipation();
+if (isset($_GET['nom_part']) && !empty($_GET['nom_part'])) {
+    $list = $participationC->search_nor($_GET['nom_part']);
+} else {
+    $list = $participationC->afficherParticipation();
+}
 
 ?>
 
@@ -284,21 +289,27 @@ $list = $participationC->afficherParticipation();
 							<div class="card">
 								<div class="card-body">
 									<div class="table-responsive table-upgrade">
+									<form action="" method="GET">
+            <input type="text" name="nom_part" id="nom_part" placeholder="chercher par nom du participant">
+            <input type="submit" value="Chercher"  class="btn btn-warning">
+        </form>
 										<table class="table">
 											<thead>
 												<tr>
+												
 												   <th class="text-center">NOM DU PARTICIPANT</th>
 													<th class="text-center">PRENOM DU PARTICIPANT</th>
 													<th class="text-center">AGE DU PARTICIPANT</th>
 													<th class="text-center">MAIL</th>
 													<th class="text-center">NUMERO</th>
-													<th class="text-center">ID D4EVENEMENT</th>
+													<th class="text-center">ID D'EVENEMENT</th>
 													<th class="text-center">OPTION</th>
 												</tr>
 												<?php
 		foreach ($list as $participation) {
 		?>
         <tr>
+		
 		    <td><div class="card-body text-center"><?php echo $participation['nom_part']; ?></div></td>
 			<td><div class="card-body text-center"><?php echo $participation['prenom_part']; ?></div></td>
 			<td><div class="card-body text-center"><?php echo $participation['age_part']; ?></div></td>

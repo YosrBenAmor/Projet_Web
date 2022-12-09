@@ -10,9 +10,11 @@ class evenement
 	private ?int $somme=null;
 	private ?int $nb_pt_eve=null;
 	private ?string $maladie=null;
+    private ?string $img_eve=null;
+    private ?float $note=null;
    
 
-    public function __construct( $nom_eve ,$date_eve, $lieu_eve, $duree_eve, $association_ga ,$somme , $nb_pt_eve , $maladie  )
+    public function __construct( $nom_eve ,$date_eve, $lieu_eve, $duree_eve, $association_ga ,$somme , $nb_pt_eve , $maladie ,$img_eve ,$note )
     {
        
             $this->nom_eve=$nom_eve;
@@ -23,6 +25,8 @@ class evenement
 			$this->somme=$somme;
 			$this->nb_pt_eve=$nb_pt_eve;
 			$this->maladie=$maladie;
+            $this->img_eve=$img_eve;
+            $this->note=$note;
 
         
     }
@@ -61,6 +65,13 @@ class evenement
     function getMaladie(){
         return $this->maladie;
     }
+    function getImg_eve(){
+        return $this->img_eve;
+    }
+    function getNote(){
+        return $this->note;
+    }
+
 
 
     /**
@@ -154,6 +165,30 @@ class evenement
     public function setMaladie($maladie)
     {
         $this->maladie = $maladie;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of lastName
+     *
+     * @return  self
+     */
+    public function setImg_eve($img_eve)
+    {
+        $this->img_eve = $img_eve;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of lastName
+     *
+     * @return  self
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
 
         return $this;
     }

@@ -77,6 +77,67 @@ class userC
 			die('Erreur: ' . $e->getMessage());
 		}
 	}
+	function recupereruserByemailonly($email)
+	{
+		$sql = "SELECT password from user where email = '".$email."'  limit 1 ";
+		$db = config::getConnexion();
+		try {
+			$query = $db->prepare($sql);
+			$query->execute();
+
+			$password = $query->fetch();
+			
+			return $password;
+		} catch (Exception $e) {
+			die('Erreur: ' . $e->getMessage());
+		}
+	}
+	function count_by_month($month)
+	{
+		$sql = "select MONTH(date) , count(*) from user where  MONTH(date)  = '".$month."'  group by MONTH(date)  ";
+		$db = config::getConnexion();
+		try {
+			$query = $db->prepare($sql);
+			$query->execute();
+
+			$nb = $query->fetch();
+			
+			return $nb;
+		} catch (Exception $e) {
+			die('Erreur: ' . $e->getMessage());
+		}
+	}
+	function count_user()
+	{
+		$sql = "SELECT COUNT(*)  from user where usad != '1' ";
+		$db = config::getConnexion();
+		try {
+			$query = $db->prepare($sql);
+			$query->execute();
+
+			$nb = $query->fetch();
+			
+			return $nb;
+		} catch (Exception $e) {
+			die('Erreur: ' . $e->getMessage());
+		}
+	}
+
+	function count_admin()
+	{
+		$sql = "SELECT COUNT(*)  from user where usad = '1' ";
+		$db = config::getConnexion();
+		try {
+			$query = $db->prepare($sql);
+			$query->execute();
+
+			$nb = $query->fetch();
+			
+			return $nb;
+		} catch (Exception $e) {
+			die('Erreur: ' . $e->getMessage());
+		}
+	}
 
 	function afficherUser($libelle)
     {

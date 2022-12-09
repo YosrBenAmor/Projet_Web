@@ -3,6 +3,7 @@ include '../Controller/donsC.php';
 $donC = new donC();
 $list = $donC->listdon();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -274,6 +275,7 @@ $list = $donC->listdon();
                 <div class="container-fluid p-0">
 
                     <h1 class="h3 mb-3">Liste Des Dons</h1>
+                    <a class="badge bg-dark text-white ms-2" href="chercherdon.php"> </a>
                    
 
                     <div class= row align-items-center> 
@@ -297,7 +299,7 @@ $list = $donC->listdon();
         ?>
         <tr>
             <td><?php echo $don['nom_don']; ?></td>
-            <td><?php echo $don['img_don']; ?></td>
+            <td><img src="img/<?php echo $don['img_don']; ?>"     width="100"    height="100"></td>
             <td><?php echo $don['num_tel']; ?></td>
             <td><?php echo $don['email_don']; ?></td>
                 <td>
@@ -316,15 +318,6 @@ $list = $donC->listdon();
                                                </thead>
                                                
    
-   
-   
-                                               <div class="card-body text-center">
-                                   <div class="mb-3">
-                                   <td>    <a href="adddon.php">  <button class="btn btn-success" >Ajouter</a></button></td>
-                                   
-                                   </div> </div>
-   
-   
                                            </table>
                                        </div>
                                    </div>
@@ -334,18 +327,3 @@ $list = $donC->listdon();
                    </div>
    
                    
-                                   
-   
-                   <div class="col-12 col-lg-6">
-                       <div class="card">
-                           <div class="card-header">
-                               <h5 class="card-title">Statistiques</h5>
-                               <h6 class="card-subtitle text-muted">Les dons les plus bénéficaires</h6>
-                           </div>
-                           <div class="card-body">
-                               <div class="chart chart-sm">
-                                   <canvas id="chartjs-pie"></canvas>
-                               </div>
-                           </div>
-                       </div>
-                   </div>

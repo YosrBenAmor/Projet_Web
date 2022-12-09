@@ -110,6 +110,40 @@ function showdon1($id_ass)
             die('Error: ' . $e->getMessage());
         }
     }*/
+    function showd($nom_don)
+    {
+        $sql = "SELECT * FROM don WHERE nom_don LIKE '%" . $nom_don . "%'";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $don = $query->fetchAll();
+            return $don;
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
+
+
+    function showdee($nom_don)
+    {
+        $sql = "SELECT * FROM don WHERE nom_don LIKE '%" . $nom_don . "%'";
+        $db = config::getConnexion();
+        try {
+            $result = $db->query($sql);
+                foreach ($result as $row) {
+                    return $row;
+                }
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
+
+
+   
+
+
 
 
 
