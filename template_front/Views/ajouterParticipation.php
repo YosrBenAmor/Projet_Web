@@ -1,10 +1,11 @@
 <?php
     
     require_once('../Controller/ParticipationC.php');
+	session_start();
 
     $error = "";
     $id=$_GET["id_eve"];
-
+	
     // create adherent
     $participation = null;
 
@@ -44,7 +45,8 @@
                 $_POST['age_part'],
                 $_POST['mail_part'],
                 $_POST['num_part'],
-				$id
+				$id,
+				$_POST['id']
                 
                
 
@@ -95,7 +97,7 @@
 				<!-- Menu -->
 				<nav id="menu">
 				<ul class="links">
-					<li > <a href="acceuil.php">Acceuil </a> </li>
+					<li > <a href="acceuil2.php">Acceuil </a> </li>
 
 					<li > <a href="addreservation.php">Reservation</a> </li>
 
@@ -119,7 +121,7 @@
 
 											<div class="field">
 												<label for="NOM">VOTRE NOM</label>
-												<input type="text" class="form-control" placeholder="Nom du participant" id="nom_part" name="nom_part" />
+												<input type="text" class="form-control" placeholder="Nom du participant" id="nom_part" name="nom_part" value="<?php echo $_SESSION['nom'];?>" />
 											</div>
 											<p id="nomER" class="error"></P>
 										</div>
@@ -131,7 +133,7 @@
 
 											<div class="field">
 												<label for="PRENOM">VOTRE PRÉNOM</label>
-												<input type="text" class="form-control" placeholder="Prénom du participant" id="prenom_part" name="prenom_part" />
+												<input type="text" class="form-control" placeholder="Prénom du participant" id="prenom_part" name="prenom_part" value="<?php echo $_SESSION['prenom'];?>" />
 											</div>
 											<p id="prenomER" class="error"></P>
 										</div>
@@ -153,7 +155,7 @@
 
 											<div class="field">
 												<label for="MAIL">VOTRE MAIL</label>
-												<input type="text" class="form-control" id="mail_part" name="mail_part"    placeholder="Mail" />
+												<input type="text" class="form-control" id="mail_part" name="mail_part"    placeholder="Mail" value="<?php echo $_SESSION['email'];?>" />
 											</div>
 											<p id="mailER" class="error"></P>
 										</div>
@@ -164,7 +166,7 @@
 
 											<div class="field">
 												<label for="NUMÉRO">VOTRE NUMÉRO</label>
-												<input type="text" id="num_part" name="num_part"    placeholder="Numero"/>
+												<input type="text" id="num_part" name="num_part"    placeholder="Numero" value="<?php echo $_SESSION['tel'];?>"/>
 											</div>
 											<p id="numER" class="error"></P>
 										</div>

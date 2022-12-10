@@ -75,18 +75,18 @@
 
 				<!-- Menu -->
 				<nav id="menu">
-				<ul class="links">
-					<li> <a href="acceuil.php">Acceuil </a> </li>
+					<ul class="links">
+		                <li> <a href="index.html">Home </a> </li>
 
-					<li > <a href="addreservation.php">Reservation</a> </li>
+		                <li> <a href="blog.html">Blog</a> </li>
 
-					<li> <a href="about-us.html">Catégorie</a> </li>
+		                <li> <a href="about-us.html">About Us</a> </li>
+		                
+		                <li> <a href="Evenement.html">Authors</a> </li>
 
-					<li> <a href="afficherListeEvenements.php">Evenement</a> </li>
-
-					<li><a href="afficherassociationf.php">Association</a></li>
-				</ul>
-			</nav>
+		                <li class="active"><a href="Dons.html">Dons</a></li>
+            		</ul>
+				</nav>
 
 				<!-- Main -->
 
@@ -101,8 +101,8 @@
 						<div class="inner">
 							<section>
 								<header class="major">
-									<h2>se connecter!</h2>
-									<h5>votre email et password</h5>
+									<h2>Commencez a troquer !</h2>
+									<h5>Creer un compte</h5>
 								</header>
 
 								

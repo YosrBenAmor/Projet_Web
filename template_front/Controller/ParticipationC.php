@@ -2,7 +2,7 @@
 require '../config.php';
 require '../Model/Participation.php';
 require '../Model/evenement.php';
-
+require '../Model/user.php';
 class participationC
 {
 	function afficherParticipation()
@@ -32,8 +32,8 @@ class participationC
 	}
 	function ajouterParticipation($participation)
 	{
-		$sql = "INSERT INTO participation ( nom_part , prenom_part, age_part, mail_part, num_part ,id_eve ) 
-			VALUES ( :nom_part, :prenom_part, :age_part, :mail_part, :num_part , :id_eve )";
+		$sql = "INSERT INTO participation ( nom_part , prenom_part, age_part, mail_part, num_part ,id_eve , id) 
+			VALUES ( :nom_part, :prenom_part, :age_part, :mail_part, :num_part , :id_eve , :id)";
 		$db = config::getConnexion();
 		try {
 			$query = $db->prepare($sql);
@@ -44,8 +44,8 @@ class participationC
 				'age_part' => $participation->getAge_part(),
 				'mail_part' => $participation->getMail_part(),
 				'num_part' => $participation->getNum_part(),
-				'id_eve' => $participation->getId_eve()
-				
+				'id_eve' => $participation->getId_eve(),
+				'id' => $participation->getId()
 
 				
 

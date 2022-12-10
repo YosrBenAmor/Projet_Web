@@ -1,5 +1,6 @@
 <?php
 require_once('../Controller/ParticipationC.php');
+session_start();
 
 $participationC = new participationC();
 $list = $participationC->afficherParticipation();

@@ -52,7 +52,8 @@ session_start();
 							<div class="content">
 								<p>commencez a troquer!cest tres simple et efficace sans ituliser de la mannaie reelle</p>
 								<ul class="actions">
-									<li><a href="acceuil1.php" class="button next scrolly">se Déconnecter</a></li>
+									<li><a href="#" class="button next scrolly">log out</a></li>
+									onsubmit
 								</ul>
 							</div>
 						</div>

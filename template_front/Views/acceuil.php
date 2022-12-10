@@ -91,7 +91,7 @@ Par conséquent, vous êtes un consommateur actif capable de mener un style de c
 										<img src="images/capture.PNG" alt="" />
 									</span>
 									<header class="major">
-										<h3>FAIRE DES DONS</h3>
+										<h3>faire des dons</h3>
 
 										<p>Nous vous proposons un espace pour faire des dons et même pour choisir votre distanation  nous avons une liste d'associations à votre disposition.
 
@@ -105,7 +105,7 @@ Par conséquent, vous êtes un consommateur actif capable de mener un style de c
 										<img src="images/bike.PNG" alt="" />
 									</span>
 									<header class="major">
-										<h3> NOS EVENEMENTS </h3>
+										<h3> nos évenements </h3>
 
 										<p>Nous vous organisons des événements sportifs, tels que des matchs de football et du tennis, des marathons et des randonnées à vélo juste pour vous aider à briser la routine et à sortir des décombres quotidiens.. </p>
 
