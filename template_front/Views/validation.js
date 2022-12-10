@@ -4,67 +4,48 @@ function verif() {
     
     const indiaRegex =  /^\+216\d{8}$/;
 
-    var nom_part = document.forms["mayssa"]["nom_part"].value;
-    var prenom_part = document.forms["mayssa"]["prenom_part"].value;
-    var age_part = document.forms["mayssa"]["age_part"].value;
-    var mail_part = document.forms["mayssa"]["mail_part"].value;
-    var num_part = document.forms["mayssa"]["num_part"].value;
+    var nom = document.forms["amin"]["nom"].value;
+    var prenom = document.forms["amin"]["prenom"].value;
+    var email = document.forms["amin"]["email"].value;
+    var tel = document.forms["amin"]["tel"].value;
+    var password = document.forms["amin"]["password"].value;
+    var adresse = document.forms["amin"]["adresse"].value;
    
 
 
     var nomER = document.getElementById('nomER');
    var prenomER = document.getElementById('prenomER');
-   var ageER = document.getElementById('ageER');
-    var mailER = document.getElementById('mailER');
-    var numER = document.getElementById('numER');
+    var mailER = document.getElementById('emailER');
+    var telER = document.getElementById('telER');
+    var passER = document.getElementById('passER');
+    var adER = document.getElementById('adER');
     
-    
-   if (nom_part == "" ) 
+   if (nom == "" ) 
    {
     nomER.innerHTML =  "Veuillez enter votre nom!";
    }
-   else if(prenom_part == "") 
+   else if(prenom == "") 
    {
     prenomER.innerHTML = "Veuillez enter votre prénom!";          
    }
-   else if (age_part == "") 
+   else if (email == "") 
    {
-    ageER.innerHTML = "Veuillez enter votre age!";
+    emailER.innerHTML = "Veuillez entrer votr mail!";
    }
-   else if (mail_part == "") 
+   else if (password == "") 
    {
-    mailER.innerHTML = "Veuillez entrer votr mail!";
+    passER.innerHTML = "Veuillez enter une password!";
    }
-   else if (num_part == "") 
+   else if (tel == "") 
    {
-    numER.innerHTML = "Veuillez enter votre numéro de téléphone!";
+    telER.innerHTML = "Veuillez enter votre numéro de téléphone!";
+   }
+   else if (adresse== "") 
+   {
+    adlER.innerHTML = "Veuillez enter votre numéro de téléphone!";
    }
  
-else{
 
-   if(!(nom_part.match(letters) && nom_part.charAt(0).match(/^[A-Z]+$/))) 
-    {
-        nomER.innerHTML = "Veuillez entrer le premier lettre en majuscule!";
-    } 
-    
-    if(!(prenom_part.match(letters) && prenom_part.charAt(0).match(/^[A-Z]+$/))) 
-    {
-        prenomER.innerHTML = "Veuillez entrer le premier lettre en majuscule!";
-    } 
-    else if (isNaN(age_part) || age_part < 18 ) 
-    {
-        ageER.innerHTML = "votre age doit être supérieur à 18 ans !";
-    }
- 
- 
-    else if  (!mail_part.match('@gmail.com') ) 
-{
-    mailER.innerHTML = "Votre mail doit être finir avec @gmail.com  !";
-}
-else if(!num_part.match(indiaRegex))
-{
-    numER.innerHTML = "Votre numéro doit être commencer par +216";
-}
 
  
    else  
@@ -73,7 +54,7 @@ else if(!num_part.match(indiaRegex))
     }  
 
 }
-}
+
 
 
 function validateForm(e) {

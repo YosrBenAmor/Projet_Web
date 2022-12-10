@@ -78,17 +78,18 @@
 
 				<!-- Menu -->
 				<nav id="menu">
-					<ul class="links">
-		                <li> <a href="index.php">Home </a> </li>
+				<ul class="links">
+					<li > <a href="acceuil.php">Acceuil </a> </li>
 
+					<li > <a href="addreservation.php">Reservation</a> </li>
 
-		                <li> <a href="about-us.html">About Us</a> </li>
-		                
-		                <li> <a href="Evenement.html">Authors</a> </li>
+					<li> <a href="about-us.html">Catégorie</a> </li>
 
-		                <li class="active"><a href="Dons.html">Dons</a></li>
-            		</ul>
-				</nav>
+					<li> <a href="afficherListeEvenements.php">Evenement</a> </li>
+
+					<li class="active"><a href="afficherassociationf.php">Association</a></li>
+				</ul>
+			</nav>
 
 				<!-- Main -->
 					<div id="main" class="alt">

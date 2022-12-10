@@ -1,8 +1,7 @@
 <?php
-    include_once '../Model/user.php';
-    include_once '../Controller/userC.php';
 
-    $error = "";
+   include_once '../Model/user.php';
+    include_once '../Controller/userC.php';
 
     // create user
     $user = null;
@@ -10,44 +9,45 @@
     // create an instance of the controller
     $userC = new userC();
     if (
-        isset($_POST["nom"]) &&		
-        isset($_POST["prenom"]) &&
+
         isset($_POST["password"]) &&
-        isset($_POST["adresse"]) && 
-        isset($_POST["email"]) && 
-        isset($_POST["tel"]) 
-       // isset($_POST["usad"])
+        isset($_POST["email"]) 
     ) {
-        if (
-            !empty($_POST['nom']) &&
-         	!empty($_POST["prenom"]) && 
+       
+		if (
+
             !empty($_POST["password"]) && 
-            !empty($_POST["adresse"]) && 
-            !empty($_POST["email"]) && 
-           !empty($_POST["tel"]) 
-           // !empty($_POST["usad"])
-        ){
-            $user = new user(
-                null,
-				$_POST['nom'],
-                $_POST['prenom'],
-				null, 
-				$_POST['password'], 
-                $_POST['adresse'],
-                $_POST['email'],
-                $_POST['tel'],
-                null
-            );
-            $userC->ajouteruser($user);
-            header('Location:acceuil.php');
+            !empty($_POST["email"]) 
+        ) {
+			$password = $_POST["password"];
+			$email = $_POST["email"] ; 
+
+		$result = $userC->recupereruserByemail($email,$password);
+		if($result == null)
+			$error ="Email et/ou mot de passe est incorrect";
+		else{
+        			$_SESSION['id']= $result['id']; 
+			        $_SESSION['nom']= $result['nom'];
+					$_SESSION['prenom']= $result['prenom'];
+					$_SESSION['password']= $result['password'];
+					$_SESSION['email']= $result['email'];
+					$_SESSION['adresse']= $result['adresse'];
+					$_SESSION['tel']= $result['tel'];
+					$_SESSION['usad']= $result['usad'];
+			    	}
+			
+
+			$_SESSION['msg'] = "vous etes connecté ! yay !!!";
+            header('Location:acceuil2.php');
         }
-        else
-            $error = "Missing information";
+        /*else
+            $error = "Veuillez verifier votre email ou mot de passe";*/
     }
+
+
 
     
 ?>
-
 <html>
 <head>
 		<title>PHPJabbers.com | Free Blog Website Template</title>
@@ -57,7 +57,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		
-	<script type="text/javascript" src="validation.js"></script>
+	<script type="text/javascript" src="val.js"></script>
 
 	</head>
 	<body class="is-preload">
@@ -75,18 +75,18 @@
 
 				<!-- Menu -->
 				<nav id="menu">
-					<ul class="links">
-		                <li> <a href="index.html">Home </a> </li>
+				<ul class="links">
+					<li> <a href="acceuil.php">Acceuil </a> </li>
 
-		                <li> <a href="blog.html">Blog</a> </li>
+					<li > <a href="addreservation.php">Reservation</a> </li>
 
-		                <li> <a href="about-us.html">About Us</a> </li>
-		                
-		                <li> <a href="Evenement.html">Authors</a> </li>
+					<li> <a href="about-us.html">Catégorie</a> </li>
 
-		                <li class="active"><a href="Dons.html">Dons</a></li>
-            		</ul>
-				</nav>
+					<li> <a href="afficherListeEvenements.php">Evenement</a> </li>
+
+					<li><a href="afficherassociationf.php">Association</a></li>
+				</ul>
+			</nav>
 
 				<!-- Main -->
 
@@ -101,24 +101,14 @@
 						<div class="inner">
 							<section>
 								<header class="major">
-									<h2>Commencez a troquer !</h2>
-									<h5>Creer un compte</h5>
+									<h2>se connecter!</h2>
+									<h5>votre email et password</h5>
 								</header>
 
 								
-								<form action="" method="POST"  name="amin" onsubmit="return validateForm(event)" >
+				<form action="" method="POST"  name="amin" onsubmit="return validateForm(event)" >
 									<div class="fields">
-										<div class="field half">
-											<label for="nom">Nom</label>
-											<input type="text" name="nom" id="nom" />
-											<p id="nomER" class="error"></P>
-										</div>
-										
-										<div class="field half">
-											<label for="prenom">Prenom</label>
-											<input type="text" name="prenom" id="prenom" />
-											<p id="prenomER" class="error"></P>
-										</div>
+
 										<div class="field">
 											<label for="email">email</label>
 											<input type="text" name="email" id="email" />
@@ -126,18 +116,13 @@
 										</div>
 										<div class="field">
 											<label for="password">mot de passe</label>
-											 <input type="text" name ='password'  id="password"/><br>
-											<input type="checkbox" id="GFG" onclick="myFunction()">	Hide Password
-											<script>
-        function myGeeks() {
-            var g = document.getElementById("GFG").defaultChecked;
-            document.getElementById("sudo").innerHTML = g;
-        }
-    </script>
+											 <input type="text" value="" name="password" id="password"/><br>
+											<input type="checkbox" onclick="myFunction()">Show Password
+											
 											<script>
 											function myFunction() {
 											  var x = document.getElementById("password");
-											  if (x.type == "password") {
+											  if (x.type === "password") {
 												x.type = "text";
 											  } else {
 												x.type = "password";
@@ -149,34 +134,26 @@
 										</div>
 										<p id="passER" class="error"></P>
 								
-										<div class="field">
-											<label for="tel">numero telephone</label>
-											<input type="text" name="tel" id="tel" />
-											<p id="telER" class="error"></P>
-										</div>
-										<div class="field">
-											<label for="adresse">adresse</label>
-											<input type="text" name="adresse" id="adresse" />
-											<p id="adER" class="error"></P>
-										</div>
-										
-                                        <tr>
-										</div>
+
 										<div class="field half text-right">
 											<ul class="actions">
-												<input type="submit" value="creer compte" class="primary" />
-											</ul>
-											vous avez deja un compte? <a href="login.php">se connecter</a>
+												<li><input name="login-submit" type="submit" value="se connecter" class="primary" /></li>
+																	
+													</ul>
+													<p>
+												vous n'avez pas un compte? <a href="ajouterUser.php">creer un compte</a>
+												mot de passe oublié? <a href="forgot.php">recupérer votre mot de passe </a>
+										</p>	
 										</div>
 									</div>
 								</form>
 							
 						</div>
 						</div>
-				
+					
+
 
 				<!-- Footer -->
-				
 					<footer id="footer">
 						<div class="inner">
 							<ul class="icons">

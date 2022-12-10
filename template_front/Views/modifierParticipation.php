@@ -6,8 +6,8 @@ $error = "";
 
 // create participation
 
-$id=$_GET["id_eve"];
-	$id1=1;
+$id=$_GET["id_part"];
+	
 
 
 // create an instance of the controller
@@ -37,8 +37,8 @@ if (
                 $_POST['age_part'],
                 $_POST['mail_part'],
                 $_POST['num_part'],
-				$id,
-				$id1
+				$id
+				
 				
 				
         );
@@ -64,7 +64,7 @@ if (
     color: red;
 }
 </style>
-	<script type="text/javascript" src="validation.js"></script>
+	<script type="text/javascript" src="validation11.js"></script>
 
 	</head>
 	<body class="is-preload">

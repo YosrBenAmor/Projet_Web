@@ -1,26 +1,7 @@
 <?php
 include '../Controller/donsC.php';
 $donC = new donC();
-//$list = $donC->listdon();
-$db = new PDO( 'mysql:host=localhost;dbname=projet_web', 'root', '' );
-
-
-// user input
-$page 	 = isset( $_GET['page'] ) ? (int) $_GET['page'] : 1;
-$perPage = isset( $_GET['per-page'] ) && $_GET['per-page'] <= 10 ? (int) $_GET['per-page'] : 2;
-
-// positioning
-$start = ( $page > 1 ) ? ( $page * $perPage ) - $perPage : 0;
-
-// query
-$donC = $db->prepare( "SELECT SQL_CALC_FOUND_ROWS * FROM don LIMIT {$start}, {$perPage}" );
-$donC->execute();
-$donC= $donC->fetchAll( PDO::FETCH_ASSOC );
-
-// pages
-$total = $db->query( "SELECT FOUND_ROWS() as total" )->fetch()['total'];
-$pages = ceil( $total / $perPage );
-
+$list = $donC->listdon();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -48,18 +29,18 @@ $pages = ceil( $total / $perPage );
 
 				<!-- Menu -->
 				<nav id="menu">
-					<ul class="links">
-		                <li> <a href="index.php">Home </a> </li>
+				<ul class="links">
+					<li > <a href="acceuil.php">Acceuil </a> </li>
 
-		                
+					<li > <a href="addreservation.php">Reservation</a> </li>
 
-		                <li> <a href="about-us.html">Catégorie</a> </li>
-		                
-		                <li> <a href="Evenement.html">Evenement</a> </li>
+					<li> <a href="about-us.html">Catégorie</a> </li>
 
-		                <li class="active"><a href="afficherassociationf.php">Association</a></li>
-            		</ul>
-				</nav>
+					<li> <a href="afficherListeEvenements.php">Evenement</a> </li>
+
+					<li class="active"><a href="afficherassociationf.php">Association</a></li>
+				</ul>
+			</nav>
 
 				<!-- Main -->
 				<div id="main" class="alt">
@@ -72,38 +53,25 @@ $pages = ceil( $total / $perPage );
 								</header>
                                 <thead>
                                                 
-			<div class="container">
-			<div class="col-md-12">
-			<?php foreach ( $donC as $don ): ?>
-				<div class="don">
-					<p class="lead">
-					<div class="card-body text-center"><th class="card-body text-center"></th><img src="images/<?php echo $don['img_don']; ?>  "  width="300"    height="250"></div>
+                                                <?php
+                                                foreach ($list as $don) 
+                                                {
+                                                ?>
+						<div class="card-body text-center"><th class="card-body text-center"></th><img src="images/<?php echo $don['img_don']; ?>  "  width="300"    height="250"></div>
         <div class="card-body text-center"><th class="card-body text-center">NOM DU DON : </th><?php echo $don['nom_don']; ?></div>
          <div class="card-body text-center"><th class="card-body text-center">VOTRE NUMÉRO : </th><?php echo $don['num_tel']; ?></div>
          <div class="card-body text-center"><th class="card-body text-center">VOTRE ÉMAIL :</th><?php echo $don['email_don']; ?></div>
          <div class="card-body text-center"><button class="btn btn-warnig"><a href="deletedon.php?id_don=<?PHP echo $don['id_don']; ?>">Supprimer</span></a></i></button>
 		 <div class="card-body text-center"><button class="btn btn-warnig"><a href="updatedon.php?id_don=<?PHP echo $don['id_don']; ?>">Modifier</span></a></i></button>
-					</p>
-				</div>
-				<?php endforeach ?>
-			</div>
-			<div class="col-md-12">
-				<div class="well well-sm">
-					<div class="paginate">
-						<?php for ( $x=1; $x <= $pages; $x++ ): ?>
-						<ul class="pagination">
-							<li>
-								<a href="?page=<?php echo $x; ?>&per-page=<?php echo $perPage; ?>">
-									<?php echo $x; ?>
-								</a>
-							</li>
-						</ul>
-						<?php endfor; ?>
-					</div>
-				</div>
-			</div>
-		</div><!--end main container-->
-
+                                              <br>
+                                              <hr>
+                                              <br>
+                                                <?php
+                                                }
+                                                 ?>
+                                              
+                                              <br>
+                                              <br>
                                 </thead>
 								
 								

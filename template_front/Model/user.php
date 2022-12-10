@@ -1,94 +1,79 @@
 <?php
-class user
-{
-    private ?int $id_us = null;
-    private ?string $nom_us = null;
-    private ?string $prenom_us = null;
-    private ?string $mail_us = null;
-    private ?string $mdp_us = null;
-    
-   
+	class user{
+		private ?int $id=null;
+		private ?string $nom=null;
+		private ?string $prenom=null;
+		private ?int $pts=null;
+		private ?string $password=null;
+		private ?string $adresse=null;
+		private ?string $email=null;
+		private ?string $tel=null;
+		private ?int $usad=null;
 
-    public function __construct( $nom_us ,$prenom_us, $mail_us, $mdp_us )
-    {
-       
-            $this->nom_us=$nom_us;
-			$this->prenom_us=$prenom_us;
-			$this->mail_us=$mail_us;
-			$this->mdp_us=$mdp_us;
-			
-        
-    }
-   
-    public function getId_us()
-    {
-        return $this->id_us;
-    }
-    public function getNom_us()
-    {
-        return $this->nom_us;
-    }
-    public function getMail_us()
-    {
-        return $this->mail_us;
-    }
-    public function getPrenom_us()
-    {
-        return $this->prenom_us;
-    }
-    public function getMdp_us()
-    {
-        return $this->mdp_us;
-    }
-    
+		
+		function __construct($id, $nom, $prenom,$pts, $password, $adresse, $email,  $tel ,$usad){
+			$this->id=$id;
+			$this->nom=$nom;
+			$this->prenom=$prenom;
+			$this->pts=$pts;
+			$this->password=$password;
+			$this->adresse=$adresse;
+			$this->email=$email;
+			$this->tel=$tel;
+			$this->usad=$usad;
+		
+		}
+		function getNom(){
+			return $this->nom;
+		}
+		function getPrenom(){	
+			return $this->prenom;
+		}
+		function getPts(){
+			return $this->pts;
+		}
+		
+		function getPassword(){
+			return $this-> password;
+		}
 
-
-    /**
-     * Set the value of lastName
-     *
-     * @return  self
-     */
-    public function setNom_us($nom_us)
-    {
-        $this->nom_us = $nom_us;
-
-        return $this;
-    }
-/**
-     * Set the value of lastName
-     *
-     * @return  self
-     */
-    public function setPrenom_us($prenom_us)
-    {
-        $this->prenom_us = $prenom_us;
-
-        return $this;
-    }
-
-    /**
-     * Set the value of lastName
-     *
-     * @return  self
-     */
-    public function setMail_us($mail_us)
-    {
-        $this->mail_us = $mail_us;
-
-        return $this;
-    }
-
-    /**
-     * Set the value of lastName
-     *
-     * @return  self
-     */
-    public function setMdp_us($mdp_us)
-    {
-        $this->mdp_us = $mdp_us;
-
-        return $this;
-    }
-
-   
-}
+		function getAdresse(){
+			return $this->adresse;
+		}
+		function getEmail(){
+			return $this->email;
+		}
+		function getTel(){
+			return $this->tel;
+		}
+		function getUsad(){
+			return $this->usad;
+		}
+		
+		function setNom(string $nom){
+			$this->nom=$nom;
+		}
+		function setPrenom(string $prenom){
+			$this->prenom=$prenom;
+		}
+		function setPts(string $pts){
+			$this->pts=$pts;
+		}
+		function setPassword(string $password){
+			$this->password=$password;
+		}
+	
+		function setAdresse(string $adresse){
+			$this->adresse=$adresse;
+		}
+		function setEmail(string $email){
+			$this->email=$email;
+		}
+		function setTel(string $tel){
+			$this->tel=$tel;
+		}
+		function setUsad(string $usad){
+			$this->usad=$usad;
+		}
+		
+	}

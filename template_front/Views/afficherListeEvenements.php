@@ -38,20 +38,18 @@ $liste = $evenementC->listevenements();
 
 				<!-- Menu -->
 				<nav id="menu">
-					<ul class="links">
-						
-		                <li> <a href="index.html">Acceuil </a> </li>
+				<ul class="links">
+					<li > <a href="acceuil.php">Acceuil </a> </li>
 
-		                <li> <a href="blog.html">blog</a> </li>
+					<li > <a href="addreservation.php">Reservation</a> </li>
 
-		                <li> <a href="about-us.html">Catégorie</a> </li>
-		                
-		                <li class="active"> <a href="afficherListeEvenements.php">Evenement</a> </li>
+					<li> <a href="about-us.html">Catégorie</a> </li>
 
-		                
-		                <li ><a href="Dons.html">Dons</a></li>
-            		</ul>
-				</nav>
+					<li class="active"> <a href="afficherListeEvenements.php">Evenement</a> </li>
+
+					<li><a href="afficherassociationf.php">Association</a></li>
+				</ul>
+			</nav>
 
 				<!-- Main -->
 					<div id="main" class="alt">

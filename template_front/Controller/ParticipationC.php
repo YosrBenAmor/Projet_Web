@@ -2,7 +2,7 @@
 require '../config.php';
 require '../Model/Participation.php';
 require '../Model/evenement.php';
-require '../Model/user.php';
+
 class participationC
 {
 	function afficherParticipation()
@@ -32,8 +32,8 @@ class participationC
 	}
 	function ajouterParticipation($participation)
 	{
-		$sql = "INSERT INTO participation ( nom_part , prenom_part, age_part, mail_part, num_part ,id_eve  ,id_us) 
-			VALUES ( :nom_part, :prenom_part, :age_part, :mail_part, :num_part , :id_eve , :id_us)";
+		$sql = "INSERT INTO participation ( nom_part , prenom_part, age_part, mail_part, num_part ,id_eve ) 
+			VALUES ( :nom_part, :prenom_part, :age_part, :mail_part, :num_part , :id_eve )";
 		$db = config::getConnexion();
 		try {
 			$query = $db->prepare($sql);
@@ -44,8 +44,8 @@ class participationC
 				'age_part' => $participation->getAge_part(),
 				'mail_part' => $participation->getMail_part(),
 				'num_part' => $participation->getNum_part(),
-				'id_eve' => $participation->getId_eve(),
-				'id_us' => $participation->getId_us(),
+				'id_eve' => $participation->getId_eve()
+				
 
 				
 
@@ -103,20 +103,7 @@ class participationC
             $e->getMessage();
         }
 }
-function recupererUser($id_us)
-	{
-		$sql = "SELECT * from participation where id_us = $id_us";
-        $db = config::getConnexion();
-        try {
-            $query = $db->prepare($sql);
-            $query->execute();
 
-            $participation = $query->fetch();
-            return $participation;
-        } catch (Exception $e) {
-            die('Error: ' . $e->getMessage());
-        }
-	}
 	function recupererNom_eve($id_eve)
 	{
 		$sql = "SELECT nom_eve as 'nom_eve' from evenement join participation on (evenement.id_eve)=(participation.id_eve);";

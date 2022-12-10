@@ -4,14 +4,12 @@
 
     $error = "";
     $id=$_GET["id_eve"];
-	$id1=1;
+
     // create adherent
-	$participationC = new participationC();
-	$participation = $participationC->recupererUser($id1);
-	
+    $participation = null;
 
     // create an instance of the controller
-   
+    $participationC = new participationC();
     if (
         
 		
@@ -46,14 +44,13 @@
                 $_POST['age_part'],
                 $_POST['mail_part'],
                 $_POST['num_part'],
-				$id,
-				$id1
+				$id
                 
                
 
             );
             $participationC->ajouterParticipation($participation);
-            header('Location:afficherListeParticipation.php');
+            header('Location:afficherDetailsEvenements .php');
         }
         else
             $error = "Missing information";
@@ -78,7 +75,7 @@
     color: red;
 }
 </style>
-	<script type="text/javascript" src="validation.js"></script>
+	<script type="text/javascript" src="validation11.js"></script>
 
 	</head>
 	<body class="is-preload">
@@ -97,21 +94,18 @@
 
 				<!-- Menu -->
 				<nav id="menu">
-					<ul class="links">
-						
-		                <li> <a href="index.html">Acceuil </a> </li>
+				<ul class="links">
+					<li > <a href="acceuil.php">Acceuil </a> </li>
 
-		                <li> <a href="blog.html">blog</a> </li>
+					<li > <a href="addreservation.php">Reservation</a> </li>
 
-		                <li> <a href="about-us.html">Catégorie</a> </li>
-		                
-		                <li class="active"> <a href="afficherListeEvenements.php">Evenement</a> </li>
+					<li> <a href="about-us.html">Catégorie</a> </li>
 
-		                
-		                <li ><a href="Dons.html">Dons</a></li>
-            		</ul>
-				</nav>
+					<li class="active"> <a href="afficherListeEvenements.php">Evenement</a> </li>
 
+					<li ><a href="afficherassociationf.php">Association</a></li>
+				</ul>
+			</nav>
 				     
 				<form action="" method="POST"  name="mayssa" onsubmit="return validateForm(event)" >
         
@@ -177,7 +171,7 @@
 									</div>
                                      <br>
 
-                        <input class="btn btn-success" type="submit" value="Envoyer"> <a href="afficherListeParticipation.php?id_eve=<?php echo $participation['id_eve']; ?>" name="id_eve"></a> 
+                        <input class="btn btn-success" type="submit" value="Envoyer"> <a href="afficherDetailsEvenements .php"></a> 
                    
                         <input type="reset" value="Annuler" >
                     
