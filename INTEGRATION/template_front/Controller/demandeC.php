@@ -1,6 +1,7 @@
 <?php
 include __DIR__.'/../config.php';
 include_once __DIR__.'/../model/demande.php';
+include_once __DIR__.'/../model/reservation.php';
 class demandeC
 { 
 	function afficherListedemande()
@@ -28,8 +29,8 @@ class demandeC
 	}
 	function adddemande($demande)
 	{
-		$sql = "INSERT INTO demande (iddemande,name, mdp,  email, reffd, telp,status) 
-			VALUES (:iddemande,:name,:mdp, :email,:reffd, :telp,:status)";
+		$sql = "INSERT INTO demande (iddemande,name, mdp,  email, reffd, telp,status,id) 
+			VALUES (:iddemande,:name,:mdp, :email,:reffd, :telp,:status, :id)";
 		$db = config::getConnexion();
 		try {
 			$query = $db->prepare($sql);
@@ -40,7 +41,8 @@ class demandeC
 				'email' => $demande->getEmail(),
 				'reffd' => $demande->getReffd(),
 				'telp' => $demande->getTelp(),
-				'status' => $demande->getStatus()
+				'status' => $demande->getStatus(),
+				'id' => $demande->getId()
 			]);
 		} catch (Exception $e) {
 			echo 'Erreur: ' . $e->getMessage();
@@ -49,7 +51,7 @@ class demandeC
 	
 	function count_accepter()
     {
-        $sql = "SELECT COUNT(*)  from demande where status != 'vous avez acceptez la reseration' ";
+        $sql = "SELECT COUNT(*)  from demande where status != 'reservation accepter' ";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -65,7 +67,7 @@ class demandeC
 
 	function count_refuser()
     {
-        $sql = "SELECT COUNT(*)  from demande where status != 'vous avez refusez la reseration' ";
+        $sql = "SELECT COUNT(*)  from demande where status != 'reservation refuser' ";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -78,6 +80,8 @@ class demandeC
             die('Erreur: ' . $e->getMessage());
         }
     }
+	 
+
 
 	}
 

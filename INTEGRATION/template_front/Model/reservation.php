@@ -7,15 +7,17 @@ class reservation
     private ?string $address = null;
     private ?string $phonenumber = null;
     private ?string $reff = null;
+    private ?string $id = null;
 
 
-    function __construct($firstName, $lastName,  $address, $phonenumber, $reff)
+    function __construct($firstName, $lastName,  $address, $phonenumber, $reff,$id)
     {
         $this->lastName = $lastName;
         $this->firstName = $firstName;
         $this->address = $address;
         $this->phonenumber = $phonenumber;
         $this->reff = $reff;
+        $this->id = $id;
     }
 
 
@@ -113,4 +115,17 @@ class reservation
 
         return $this;
     }
+    
+  
+    function getId()
+    {
+        return $this->id;
+    }
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
 }

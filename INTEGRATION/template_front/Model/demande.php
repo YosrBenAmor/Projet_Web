@@ -8,10 +8,11 @@ class demande
     private ?string $reffd = null;
     private ?string $telp = null;
     private ?string $status = null;
+    private ?string $id = null;
     
    
 
-    function __construct($name,$mdp,$email, $reffd ,$telp,$status)
+    function __construct($name,$mdp,$email, $reffd ,$telp,$status,$id)
     {
         $this->name = $name;
         $this->mdp = $mdp;
@@ -19,7 +20,7 @@ class demande
         $this->reffd = $reffd;
         $this->telp = $telp;
         $this->status = $status;
-       
+        $this->id = $id;
     }
 
 
@@ -144,4 +145,21 @@ class demande
 
         return $this;
     }
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+   
+     *
+     * @return  self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
 }

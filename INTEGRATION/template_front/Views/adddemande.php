@@ -1,4 +1,7 @@
 <?php
+session_start();
+$id2= $_SESSION['id'] = 4;
+$_SESSION['email'] = "aa@gmail.com";
 include_once "../../model/demande.php";
 include_once '../../controller/demandeC.php';
 $error = "";
@@ -15,14 +18,17 @@ if (
 	isset($_POST["reffd"]) &&
 	isset($_POST["telp"])&&
 	isset($_POST["status"])
+
 ) {
 	if (
 		!empty($_POST['name']) &&
 		!empty($_POST["mdp"]) &&
 		!empty($_POST["email"]) &&
+		$_POST['email'] == $_SESSION['email'] && 
 		!empty($_POST["reffd"]) &&
 		!empty($_POST["telp"])&&
 		!empty($_POST["status"])
+		
 
 
 	) {
@@ -34,10 +40,11 @@ if (
 			$_POST['email'],
 			$_POST['reffd'],
 			$_POST['telp'],
-			$_POST['status']
+			$_POST['status'],
+			$id2
 
 		);
-
+                            
 		$demandeC->adddemande($demande);
 		//header('Location: afficherListedemande.php');
 	} else
@@ -78,18 +85,18 @@ if (
 
 				<!-- Menu -->
 				<nav id="menu">
-				<ul class="links">
+					<ul class="links">
 					<li > <a href="acceuil.php">Acceuil </a> </li>
 
-					<li  class ="active"> <a href="addreservation.php">Reservation</a> </li>
+        <li  class ="active"> <a href="addreservation.php">Reservation</a> </li>
 
-					<li> <a href="front.php">Catégorie</a> </li>
+          <li> <a href="front.php">Catégorie</a> </li>
 
-					<li> <a href="afficherListeEvenements.php">Evenement</a> </li>
+            <li> <a href="afficherListeEvenements.php">Evenement</a> </li>
 
-					<li><a href="afficherassociationf.php">Association</a></li>
-				</ul>
-			</nav>
+              <li><a href="afficherassociationf.php">Association</a></li>
+            		</ul>
+				</nav>
 
 				<!-- Main -->
 					<div id="main" class="alt">
@@ -124,7 +131,7 @@ if (
 										</div>
 										
 										<div class="field half">
-											<label for="mdp">Mdp</label>""
+											<label for="mdp">Mdp</label>
 											<input type="text" name="mdp" id="mdp" />
 											<p id="errorPass" class="error"></p>
 
@@ -152,15 +159,15 @@ if (
 										
 										<h3>en attente à votre reponse</h3>
                                             <p id="status_field" class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
-                                                <label class="" for="status">status <abbr title="required" class="required">*</abbr>
+                                                <label class="" for="status">status <abbr title="required" class="required"></abbr>
                                                 </label>
                                                 <select class="status" id="status" name="status">
                                                    <option value="">votre reponse</option>
-                                                    <option value="vous avez acceptez la reseration">accepter</option>
-                                                    <option value="vous avez refusez la reseration">refuser</option>
-													
-                                                   
+                                                    <option value=" reservation accepter">accepter</option>
+                                                    <option value=" reservation refuser">refuser</option>
+
                                                 </select>
+												
                                             </p>
 									
 										<div class="field half text-right">
