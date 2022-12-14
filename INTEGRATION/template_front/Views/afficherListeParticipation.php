@@ -1,16 +1,8 @@
 <?php
 require_once('../Controller/ParticipationC.php');
-
-
 $participationC = new participationC();
 $list = $participationC->afficherParticipation($_GET['id']);
-$id=80;
-
-
-
-
 ?>
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -28,9 +20,13 @@ $id=80;
 
 				<!-- Header -->
 				<header id="header" class="alt">
-					<a href="index.html" class="logo"><img src="images/logo.png"  /></a>
-					<nav>
+					<a  class="logo"><img src="images/logo.png"  /></a>
+					<?php echo $_SESSION['nom'];?> 
+					<?php echo $_SESSION['prenom'];?> 
+					 					<nav>
+					
 					<a href="afficherListeParticipation.php?id=<?php  echo $_SESSION['id']; ?>">Participation</a>
+					<a href="profile.php" >Profile<a>
 						<a href="#menu">Menu</a>
 					</nav>
 				</header>
@@ -38,15 +34,18 @@ $id=80;
 				<!-- Menu -->
 				<nav id="menu">
 				<ul class="links">
-					<li > <a href="acceuil.php">Acceuil </a> </li>
-
-					<li > <a href="addreservation.php">Reservation</a> </li>
+					<li > <a href="acceuil2.php">Acceuil </a> </li>
 
 					<li> <a href="front.php">Catégorie</a> </li>
 
+					<li > <a href="addreservation.php">Reservation</a> </li>
+
+					<li > <a href="adddemande.php">Demande</a> </li>
+
+				
 					<li class="active"> <a href="afficherListeEvenements.php">Evenement</a> </li>
 
-					<li ><a href="afficherassociationf.php">Association</a></li>
+					<li><a href="afficherassociationf.php">Association</a></li>
 				</ul>
 			</nav>
 
@@ -63,15 +62,14 @@ $id=80;
 												<?php
 		foreach ($list as $participation) {
 		?>
-        <td><div class="card-body text-center"><th class="text-center">NOM DU L'EVENEMENT : </th><?php   echo  $nom_eve = $participationC->recupererNom_eve($id); ?></div></td>
-		<td><div class="card-body text-center"><th class="text-center">NOMBRE DE POINTS À GAGNER : </th><?php   echo  $nb_pt_eve = $participationC->recupererPt_eve($id); ?></div></td>
+       
 		<div class="card-body text-center"><th class="text-center">NOM DU PARTICIPANT : </th><?php echo $participation['nom_part']; ?></div>
 		<div class="card-body text-center"><th class="text-center">PRENOM DU PARTICIPANT : </th><?php echo $participation['prenom_part']; ?></div>
 		<div class="card-body text-center"><th class="text-center">AGE DU PARTICIPANT : </th><?php echo $participation['age_part']; ?></div>
 		<div class="card-body text-center"><th class="text-center">MAIL : </th><?php echo $participation['mail_part']; ?></div>
 		<div class="card-body text-center"><th class="text-center">NUMERO : </th><?php echo $participation['num_part']; ?></div>	
 		<div class="card-body text-center"><th class="text-center">OPTION : </th><button><span role="img" aria-label="no">  <a href="supprimerParticipation.php?id_part=<?php echo $participation['id_part']; ?>&id=<?php  echo $_SESSION['id']; ?>">❌</span></a> </i></button> 
-		<button><a href="modifierParticipation.php?id_part=<?php echo $participation['id_part']; ?>&id=<?php  echo $_SESSION['id']; ?>"  >mod</a></i></button>
+		<button><a href="modifierParticipation.php?id_part=<?php echo $participation['id_part']; ?>&id=<?php  echo $_SESSION['id']; ?>"  >Modifier</a></i></button>
 			<br>
 			<hr>
 			<br>

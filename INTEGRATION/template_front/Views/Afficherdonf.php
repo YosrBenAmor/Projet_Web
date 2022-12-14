@@ -20,9 +20,13 @@ $list = $donC->listdon($_GET['id']);
 
 				<!-- Header -->
 				<header id="header" class="alt">
-					<a href="index.html" class="logo"><img src="images/logo.png"  /></a>
-					<nav>
+					<a  class="logo"><img src="images/logo.png"  /></a>
+					<?php echo $_SESSION['nom'];?> 
+					<?php echo $_SESSION['prenom'];?> 
+					 					<nav>
+					
 						<a href="Afficherdonf.php?id=<?php  echo $_SESSION['id']; ?>">Dons<a>
+						<a href="profile.php" >Profile<a>
 						<a href="#menu">Menu</a>
 					</nav>
 				</header>
@@ -30,12 +34,15 @@ $list = $donC->listdon($_GET['id']);
 				<!-- Menu -->
 				<nav id="menu">
 				<ul class="links">
-					<li > <a href="acceuil.php">Acceuil </a> </li>
-
-					<li > <a href="addreservation.php">Reservation</a> </li>
+					<li > <a href="acceuil2.php">Acceuil </a> </li>
 
 					<li> <a href="front.php">Catégorie</a> </li>
 
+					<li > <a href="addreservation.php">Reservation</a> </li>
+
+					<li > <a href="adddemande.php">Demande</a> </li>
+
+				
 					<li> <a href="afficherListeEvenements.php">Evenement</a> </li>
 
 					<li class="active"><a href="afficherassociationf.php">Association</a></li>

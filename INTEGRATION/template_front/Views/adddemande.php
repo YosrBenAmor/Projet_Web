@@ -1,9 +1,9 @@
 <?php
-session_start();
+
 $id2= $_SESSION['id'] = 4;
 $_SESSION['email'] = "aa@gmail.com";
-include_once "../../model/demande.php";
-include_once '../../controller/demandeC.php';
+include_once "../model/demande.php";
+include_once '../controller/demandeC.php';
 $error = "";
 
 // create demande
@@ -77,26 +77,34 @@ if (
 
 				<!-- Header -->
 				<header id="header" class="alt">
-					<a href="index.html" class="logo"><img src="images/logo.png"  /></a>
+					<a   class="logo"><img src="images/logo.png"  /></a>
+					<?php echo $_SESSION['nom'];?> 
+					<?php echo $_SESSION['prenom'];?> 
+					 
 					<nav>
+					
+					<a href="profile.php" >Profile<a>
 						<a href="#menu">Menu</a>
 					</nav>
 				</header>
 
 				<!-- Menu -->
 				<nav id="menu">
-					<ul class="links">
-					<li > <a href="acceuil.php">Acceuil </a> </li>
+				<ul class="links">
+					<li > <a href="acceuil2.php">Acceuil </a> </li>
 
-        <li  class ="active"> <a href="addreservation.php">Reservation</a> </li>
+					<li> <a href="front.php">Catégorie</a> </li>
 
-          <li> <a href="front.php">Catégorie</a> </li>
+					<li > <a href="addreservation.php">Reservation</a> </li>
 
-            <li> <a href="afficherListeEvenements.php">Evenement</a> </li>
+					<li class="active"> <a href="adddemande.php">Demande</a> </li>
 
-              <li><a href="afficherassociationf.php">Association</a></li>
-            		</ul>
-				</nav>
+				
+					<li> <a href="afficherListeEvenements.php">Evenement</a> </li>
+
+					<li><a href="afficherassociationf.php">Association</a></li>
+				</ul>
+			</nav>
 
 				<!-- Main -->
 					<div id="main" class="alt">
@@ -105,10 +113,9 @@ if (
 							<section id="one">
 								<div class="inner">
 									<header class="major">
-										<h1>votre demande</h1>
+										<h1>Votre Demande</h1>
 									</header>
-									<span class="image main"><img src="images/map.jpg" alt="" /></span>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
+									 
 								</div>
 							</section>
 
@@ -118,20 +125,18 @@ if (
 					<section id="contact">
 						<div class="inner">
 							<section>
-								<header class="major">
-									<h2> votre demande </h2>
-								</header>
+								 
 								<fieldset>
 								<form action=" " method="POST"  name="louay" onsubmit="return validateForm(event)" >
 									<div class="fields">
 										<div class="field half">
-											<label for="name">Name</label>
+											<label for="name">Non</label>
 											<input type="text" name="name" id="name" />
 											<p id="errorNR" class="error"></p>
 										</div>
 										
 										<div class="field half">
-											<label for="mdp">Mdp</label>
+											<label for="mdp">Mot de passe</label>
 											<input type="text" name="mdp" id="mdp" />
 											<p id="errorPass" class="error"></p>
 
@@ -139,32 +144,32 @@ if (
 										
 									</div>
 									<div class="field half">
-										<label for="email">Email</label>
+										<label for="email">Émail</label>
 										<input type="text" name="email" id="email" />
 										<p id="errorMR" class="error"></p>
 									</div>
 									
 									</fieldset>
 									<div class="field half">
-										<label for="reffd">reffd</label>
+										<label for="reffd">Référence</label>
 										<input type="text" name="reffd" id="reffd" />
 										<p id="  adlER" class="error"></p>
 									</div>
 									
 									<div class="field half">
-										<label for="telp">Telp</label>
+										<label for="telp">Téléphone</label>
 										<input type="text" name="telp" id="telp" />
 										<p id=" telpER" class="error"></p>
 										</div>
 										
-										<h3>en attente à votre reponse</h3>
+										<h3>Dans l'attente de votre réponse</h3>
                                             <p id="status_field" class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
                                                 <label class="" for="status">status <abbr title="required" class="required"></abbr>
                                                 </label>
                                                 <select class="status" id="status" name="status">
-                                                   <option value="">votre reponse</option>
-                                                    <option value=" reservation accepter">accepter</option>
-                                                    <option value=" reservation refuser">refuser</option>
+                                                   <option value="">Votre réponse</option>
+                                                    <option value=" reservation accepter">Accepter</option>
+                                                    <option value=" reservation refuser">Refuser</option>
 
                                                 </select>
 												
@@ -172,7 +177,8 @@ if (
 									
 										<div class="field half text-right">
 										
-                                       <input  type="submit" value="envoyer"><br>
+                                       <input  type="submit" value="envoyer">
+									   <br><br><br>
 
 						<button><a href="afficherListedemande.php">Retour à la liste des demandes</a></button>
 						<hr>
@@ -180,31 +186,8 @@ if (
 									</div>
 								</form>
 							</section>
-							<section class="split">
-								<section>
-									<div class="contact-method">
-										<span class="icon alt fa-envelope"></span>
-										<h3>Email</h3>
-										<a href="#">tedalel@gmail.com</a>
-									</div>
-								</section>
-								<section>
-									<div class="contact-method">
-										<span class="icon alt fa-phone"></span>
-										<h3>Phone</h3>
-										<span>+1 333 4040 5566</span>
-										<br>
-										<span>+1 333 5550 3366</span>
-									</div>
-								</section>
-								<section>
-									<div class="contact-method">
-										<span class="icon alt fa-home"></span>
-										<h3>Address</h3>
-										<span>la petite ariana <br>esprit</span>
-									</div>
-								</section>
-							</section>
+							 
+								 
 						</div>
 					</section>
 

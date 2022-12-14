@@ -1,7 +1,7 @@
 <?php
-session_start();
+
 $_SESSION['id'] = 22;
-include '../../controller/reservationC.php';
+include '../controller/reservationC.php';
 $reservationC = new reservationC();
 $listereservation = $reservationC->afficherListereservations();
 ?>
@@ -18,30 +18,64 @@ $listereservation = $reservationC->afficherListereservations();
         <link rel="stylesheet" href="assets/css/noscript.css" />
     </noscript>
 </head>
+<header id="header" class="alt">
+					<a  class="logo"><img src="images/logo.png"  /></a>
+					<?php echo $_SESSION['nom'];?> 
+					<?php echo $_SESSION['prenom'];?> 
+					 
+					
+					<nav>
+					
+					<a href="profile.php" >Profile<a>
+						<a href="#menu">Menu</a>
+						 
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+				<ul class="links">
+					<li > <a href="acceuil2.php">Acceuil </a> </li>
+
+					<li> <a href="front.php">Catégorie</a> </li>
+
+					<li class="active" > <a href="addreservation.php">Reservation</a> </li>
+
+					<li > <a href="adddemande.php">Demande</a> </li>
+
+				
+					<li> <a href="afficherListeEvenements.php">Evenement</a> </li>
+
+					<li><a href="afficherassociationf.php">Association</a></li>
+				</ul>
+			</nav>
+
 
 <body class="is-preload">
 
     <center>
-        <h1>List of reservations</h1>
+        <br><br>
+        <br><br>
+        <h2>Liste des reservations</h2>
         <h2>
-            <a href="addreservation.php"> reservation</a>
+            <a href="addreservation.php">Réservation</a>
         </h2>
 
         <table border="1" align="center" width="70%">
             <tr>
-                <th>Id reservation</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Address</th>
-                <th>phonenumber</th>
-                <th>reff</th>
+                
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Adresse</th>
+                <th>téléphone</th>
+                <th>Référence</th>
 
             </tr>
             <?php
             foreach ($listereservation as $reservation) {
             ?>
                 <tr>
-                    <td><?= $reservation['idReservation']; ?></td>
+                     
                     <td><?= $reservation['lastName']; ?></td>
                     <td><?= $reservation['firstName']; ?></td>
                     <td><?= $reservation['address']; ?></td>

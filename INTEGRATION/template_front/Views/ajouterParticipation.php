@@ -87,9 +87,13 @@
 
 				<!-- Header -->
 				<header id="header" class="alt">
-					<a href="index.html" class="logo"><img src="images/logo.png"  /></a>
-					<nav>
+					<a   class="logo"><img src="images/logo.png"  /></a>
+					<?php echo $_SESSION['nom'];?> 
+					<?php echo $_SESSION['prenom'];?> 
+					 					<nav>
+					
 						<a href="afficherListeParticipation.php?id=<?php  echo $_SESSION['id']; ?>">Participation</a>
+						<a href="profile.php" >Profile<a>
 						<a href="#menu">Menu</a>
 					</nav>
 				</header>
@@ -99,13 +103,16 @@
 				<ul class="links">
 					<li > <a href="acceuil2.php">Acceuil </a> </li>
 
-					<li > <a href="addreservation.php">Reservation</a> </li>
-
 					<li> <a href="front.php">Catégorie</a> </li>
 
+					<li > <a href="addreservation.php">Reservation</a> </li>
+
+					<li > <a href="adddemande.php">Demande</a> </li>
+
+				
 					<li class="active"> <a href="afficherListeEvenements.php">Evenement</a> </li>
 
-					<li ><a href="afficherassociationf.php">Association</a></li>
+					<li><a href="afficherassociationf.php">Association</a></li>
 				</ul>
 			</nav>
 				     
@@ -173,7 +180,7 @@
 									</div>
                                      <br>
 
-                        <input class="btn btn-success" type="submit" value="Envoyer"> <a href="afficherDetailsEvenements .php"></a> 
+                        <input class="btn btn-success" type="submit" value="Envoyer"> <a href="afficherDetailsEvenements .php?id_eve=<?php echo $participation['id_eve']; ?>"></a> 
                    
                         <input type="reset" value="Annuler" >
                     

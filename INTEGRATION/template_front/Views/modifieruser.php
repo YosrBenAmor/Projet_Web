@@ -64,8 +64,12 @@ if (
 
 				<!-- Header -->
 				<header id="header" class="alt">
-					<a href="index.html" class="logo"><img src="images/logo.png"  /></a>
-					<nav>
+					<a   class="logo"><img src="images/logo.png"  /></a>
+					<?php echo $_SESSION['nom'];?> 
+					<?php echo $_SESSION['prenom'];?> 
+					 					<nav>
+					
+					<a href="profile.php" >Profile<a>
 						<a href="#menu">Menu</a>
 					</nav>
 				</header>
@@ -73,13 +77,16 @@ if (
 				<!-- Menu -->
 				<nav id="menu">
 				<ul class="links">
-					<li > <a href="acceuil.php">Acceuil </a> </li>
+					<li class="active"> <a href="acceuil.php">Acceuil </a> </li>
+
+					<li> <a href="front.php">Catégorie</a> </li>
 
 					<li > <a href="addreservation.php">Reservation</a> </li>
 
-					<li> <a href="about-us.html">Catégorie</a> </li>
+					<li > <a href="adddemande.php">Demande</a> </li>
 
-					<li > <a href="afficherListeEvenements.php">Evenement</a> </li>
+				
+					<li> <a href="afficherListeEvenements.php">Evenement</a> </li>
 
 					<li><a href="afficherassociationf.php">Association</a></li>
 				</ul>

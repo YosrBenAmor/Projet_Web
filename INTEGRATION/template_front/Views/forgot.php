@@ -37,7 +37,7 @@ if (
 			
 			$message = 'votre mot de passe est : '.$pass;
 			mail($to, $subject, $message, $headers);
-			echo 'Email envoyé !';
+			
 			}
 
 	}
@@ -64,26 +64,14 @@ if (
 
 				<!-- Header -->
 				<header id="header" class="alt">
-					<a href="index.html" class="logo"><img src="images/logo.png"  /></a>
+					<a  class="logo"><img src="images/logo.png"  /></a>
 					<nav>
 						<a href="#menu">Menu</a>
 					</nav>
 				</header>
 
 				<!-- Menu -->
-				<nav id="menu">
-				<ul class="links">
-					<li > <a href="acceuil.php">Acceuil </a> </li>
-
-					<li > <a href="addreservation.php">Reservation</a> </li>
-
-					<li> <a href="about-us.html">Catégorie</a> </li>
-
-					<li class="active"> <a href="afficherListeEvenements.php">Evenement</a> </li>
-
-					<li><a href="afficherassociationf.php">Association</a></li>
-				</ul>
-			</nav>
+				
 
 				<!-- Main -->
 
@@ -98,13 +86,13 @@ if (
 						<div class="inner">
 							<section>
 								<header class="major">
-									<h2>mot de passe oublié :c</h2>
-									<h5>recupérer</h5>
+									<h2>Mot de passe oublié </h2>
+									<h5>Recupérer</h5>
 								</header>
 
 								<form action="" method="post">
 								<div class="field">
-											<label for="email">email</label>
+											<label for="email">Émail</label>
 											<input type="text" name="email" id="email" />
 											<p id="emailER" class="error"></P>
 										</div>

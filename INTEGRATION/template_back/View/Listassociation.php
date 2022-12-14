@@ -39,60 +39,59 @@ $list = $associationC->listassociation();
 						Pages
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item " >
 						<a class="sidebar-link" href="trouverUser.php">
-							<i class="align-middle" data-feather="sliders"></i> <span
+							<i class="align-middle" data-feather="user"></i> <span
 								class="align-middle">Utilisateurs</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="afficher_categ.php">
-							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Categorie</span>
+							<i class="align-middle" data-feather="database"></i> <span class="align-middle">Categorie</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="afficher_produit.php">
-							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Produit</span>
+							<i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Produit</span>
 						</a>
+						
 					</li>
-
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="afficherListedemande.php">
-							<i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Demandes</span>
+							<i class="align-middle" data-feather="message-square"></i> <span class="align-middle">Demandes</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="afficherListereservation.php">
-							<i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Reservations</span>
+							<i class="align-middle" data-feather="message-circle"></i> <span class="align-middle">Reservations</span>
 						</a>
 					</li>
 
-					<li class="sidebar-item ">
+					<li class="sidebar-item  ">
 						<a class="sidebar-link" href="Listevenements.php">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Evenements</span>
+              <i class="align-middle" data-feather="aperture"></i> <span class="align-middle">Evenements</span>
             </a>
 					</li>
 					<li class="sidebar-item ">
 						<a class="sidebar-link" href="Listparticipants.php">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Participations</span>
+              <i class="align-middle" data-feather="users"></i> <span class="align-middle">Participations</span>
             </a>
 			</li>
 
-					<li class="sidebar-item active ">
+            <li class="sidebar-item active ">
 						<a class="sidebar-link" href="Listassociation.php">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Associations</span>
+              <i class="align-middle" data-feather="home"></i> <span class="align-middle">Associations</span>
             </a>
 			</li>
 
-            <li class="sidebar-item ">
+            <li class="sidebar-item  ">
 						<a class="sidebar-link" href="Listdon.php">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Don</span>
+              <i class="align-middle" data-feather="heart"></i> <span class="align-middle">Don</span>
             </a>
 			</li>
-
 
 					
 
@@ -183,3 +182,43 @@ $list = $associationC->listassociation();
                        </div>
                    </div>
    
+                   <footer class="footer">
+				<div class="container-fluid">
+					<div class="row text-muted">
+						<div class="col-6 text-start">
+							<p class="mb-0">
+								<a class="text-muted" href="https://adminkit.io/"
+									target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted"
+									href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin
+										Template</strong></a> &copy;
+							</p>
+						</div>
+						<div class="col-6 text-end">
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+
+	<script src="js/app.js"></script>
+
+</body>
+
+</html>
+
+

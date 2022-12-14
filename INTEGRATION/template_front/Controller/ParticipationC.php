@@ -104,35 +104,9 @@ class participationC
         }
 }
 
-	function recupererNom_eve($id_eve)
-	{
-		$sql = "SELECT nom_eve as 'nom_eve' from evenement join participation on (evenement.id_eve)=(participation.id_eve);";
-        $db = config::getConnexion();
-        try {
-            $query = $db->prepare($sql);
-            $query->execute();
+	
 
-            $participation = $query->fetch();
-            return $participation['nom_eve'];
-        } catch (Exception $e) {
-            die('Error: ' . $e->getMessage());
-        }
-	}
-
-	function recupererPt_eve($id_eve)
-	{
-		$sql = "SELECT nb_pt_eve as 'nb_pt_eve' from evenement join participation on (evenement.id_eve)=(participation.id_eve);";
-        $db = config::getConnexion();
-        try {
-            $query = $db->prepare($sql);
-            $query->execute();
-
-            $participation = $query->fetch();
-            return $participation['nb_pt_eve'];
-        } catch (Exception $e) {
-            die('Error: ' . $e->getMessage());
-        }
-	}
+	
 
 	
 	

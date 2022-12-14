@@ -43,10 +43,7 @@
         /*else
             $error = "Veuillez verifier votre email ou mot de passe";*/
     }
-
-
-
-    
+  
 ?>
 <html>
 <head>
@@ -67,36 +64,10 @@
 
 				<!-- Header -->
 				<header id="header" class="alt">
-					<a href="index.html" class="logo"><img src="images/logo.png"  /></a>
-					<nav>
-						<a href="#menu">Menu</a>
-					</nav>
+					<a   class="logo"><img src="images/logo.png"  /></a>
+					 
 				</header>
-
-				<!-- Menu -->
-				<nav id="menu">
-				<ul class="links">
-					<li > <a href="acceuil.php">Acceuil </a> </li>
-
-					<li > <a href="addreservation.php">Reservation</a> </li>
-
-					<li> <a href="about-us.html">Catégorie</a> </li>
-
-					<li> <a href="afficherListeEvenements.php">Evenement</a> </li>
-
-					<li><a href="afficherassociationf.php">Association</a></li>
-				</ul>
-			</nav>
-
-				<!-- Main -->
-
-
-		
-					
-
-
-				<!-- form -->
-				
+ 
 					<div>
 						<div class="inner">
 							<section>
@@ -110,14 +81,14 @@
 									<div class="fields">
 
 										<div class="field">
-											<label for="email">email</label>
+											<label for="email">Émail</label>
 											<input type="text" name="email" id="email" />
 											<p id="emailER" class="error"></P>
 										</div>
 										<div class="field">
-											<label for="password">mot de passe</label>
-											 <input type="text" value="" name="password" id="password"/><br>
-											<input type="checkbox" onclick="myFunction()">Show Password
+											<label for="password">Mot de passe</label>
+											 <input type="password" value="" name="password" id="password"/><br>
+											<input type="checkbox" onclick="myFunction()"> Démasquer le  mot de passe
 											
 											<script>
 											function myFunction() {
@@ -141,8 +112,10 @@
 														
 													</ul>
 													<p>
-												vous n'avez pas un compte? <a href="ajouterUser.php">creer un compte</a>
-												mot de passe oublié? <a href="forgot.php">recupérer votre mot de passe </a>
+												Vous n'avez pas un compte? <a href="ajouterUser.php">Créer un compte</a>
+												<br>
+												<br>
+												Mot de passe oublié? <a href="forgot.php">Recupérer votre mot de passe </a>
 										</p>	
 										</div>
 									</div>
@@ -150,9 +123,7 @@
 							
 						</div>
 						</div>
-					
-
-
+	 
 				<!-- Footer -->
 					<footer id="footer">
 						<div class="inner">
@@ -169,8 +140,7 @@
 							</ul>
 						</div>
 					</footer>
-
-
+ 
 			</div>
 
 		<!-- Scripts -->

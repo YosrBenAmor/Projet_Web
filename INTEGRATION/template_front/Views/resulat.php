@@ -1,5 +1,5 @@
 <?php
-include '../../controller/demandeC.php';
+include '../controller/demandeC.php';
  
 $id= 150;
 $demandeC = new demandeC();

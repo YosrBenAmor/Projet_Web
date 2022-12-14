@@ -20,8 +20,12 @@ session_start();
 
 				<!-- Header -->
 				<header id="header" class="alt">
-					<a href="index.html" class="logo"><img src="images/logo.png"  /></a>
-					<nav>
+					<a   class="logo"><img src="images/logo.png"  /></a>
+					<?php echo $_SESSION['nom'];?> 
+					<?php echo $_SESSION['prenom'];?> 
+					 					<nav>
+					
+					<a href="profile.php" >Profile<a>
 						<a href="#menu">Menu</a>
 					</nav>
 				</header>
@@ -29,12 +33,15 @@ session_start();
 				<!-- Menu -->
 				<nav id="menu">
 				<ul class="links">
-					<li > <a href="acceuil.php">Acceuil </a> </li>
+					<li > <a href="acceuil2.php">Acceuil </a> </li>
+
+					<li> <a href="front.php">Catégorie</a> </li>
 
 					<li > <a href="addreservation.php">Reservation</a> </li>
 
-					<li> <a href="about-us.html">Catégorie</a> </li>
+					<li > <a href="adddemande.php">Demande</a> </li>
 
+				
 					<li> <a href="afficherListeEvenements.php">Evenement</a> </li>
 
 					<li><a href="afficherassociationf.php">Association</a></li>
@@ -48,27 +55,26 @@ session_start();
 						<div class="inner">
 							<section>
 								<header class="major">
-									<h2>Commencez a troquer !</h2>
-									<h5>Creer un compte</h5>
+									<h2> Votre Profile </h2>
+									 
 								</header>
 
 								
 								<form action="" method="POST"  name="amin" onsubmit="return validateForm(event)" >
 									<div class="fields">
                 <div class="mb-3">
-                    <label class="form-label">ID:</label>
-                    <label class="form-label"><?php echo $_SESSION['id'];?></label><br>
-                    <label class="form-label">NOM:</label>
-                    <label class="form-label"><?php echo $_SESSION['nom'];?></label> <br>
-                    <label class="form-label">PRENOM:</label>
-                    <label class="form-label"><?php echo $_SESSION['prenom'];?></label><br>
-                    <label class="form-label">EMAIL:</label>
-                    <label class="form-label"><?php echo $_SESSION['email'];?></label> <br>
-                    <label class="form-label">ADRESSE:</label>
-                    <label class="form-label"><?php echo $_SESSION['adresse'];?></label><br>
-                    <label class="form-label">NUMERO TELEPHONE:</label>
-                    <label class="form-label"><?php echo $_SESSION['tel'];?></label> <br>
-                  
+					<br>
+					<br>
+					<thead>
+
+                      
+					<div class="card-body text-center"><th class="card-body text-center">Nom : </th><?php echo $_SESSION['nom'];?></div>   
+					<div class="card-body text-center"><th class="card-body text-center">Prénom : </th><?php echo $_SESSION['prenom'];?></div> 
+					<div class="card-body text-center"><th class="card-body text-center">Émail : </th><?php echo $_SESSION['email'];?></div>  
+                    <div class="card-body text-center"><th class="card-body text-center">Adresse : </th><?php echo $_SESSION['adresse'];?></div> 
+					<div class="card-body text-center"><th class="card-body text-center">Téléphone : </th><?php echo $_SESSION['tel'];?></div>  
+                     
+</thead>
                 </div>
                 </div>
 </label>

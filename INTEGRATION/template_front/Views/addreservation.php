@@ -1,9 +1,9 @@
 <?php
-session_start();
+
 $id1= $_SESSION['id'] = 7;
 $_SESSION['phonenumber'] = "99450529";
-include_once "../../model/reservation.php";
-include_once '../../controller/reservationC.php';
+include_once "../model/reservation.php";
+include_once '../controller/reservationC.php';
 $error = "";
 
 
@@ -77,35 +77,28 @@ if (
 <table cellpadding="2" width="100%">
 	<tr>
 
-		<td align="center"><a href="http://localhost:8080/projet%20web/view/front/index.html">Home</a></td>
-		<td align="center"><a href="http://localhost:8080/projet%20web/view/front/Evenement.html">events</a></td>
-		<td align="center"><a href="http://localhost:8080/projet%20web/view/front/Dons.html">donation</a></td>
-		<td align="center"><a href="http://localhost:8080/projet%20web/view/front/about-us.html">produits</a></td>
-		<td align="center"><a href="../../../more/index.htm">More</a></td>
-
-
-
+		 
 		<form method="POST">
-		
+		<br><br><br>
 			<div class="container">
 				<div style="text-align:center">
-					<h2>votre reservation</h2>
-					<p>Même les objets peuvent refaire leur vie</p>
+					<h2>Votre réservation</h2>
+					
 				</div>
 				<div class="row">
 
 					<div class="column">
 
-						<label for="fname">First Name</label>
-						<input type="text" id="firstname" name="firstName" placeholder="Your name.."><br><br>
-						<label for="lname">Last Name</label>
-						<input type="text" id="lastname" name="lastName" placeholder="Your last name..">
-						<label for="reff">reff:</label><br>
-						<input type="text" id="reff" name="reff" value="reff"><br>
-						<label for="phonenumber">tapez votre numero :</label><br>
+						<label for="fname">Prénom</label>
+						<input type="text" id="firstname" name="firstName" placeholder="Prénom"><br><br>
+						<label for="lname">Nom</label>
+						<input type="text" id="lastname" name="lastName" placeholder="Nom">
+						<label for="reff">Référence</label><br>
+						<input type="text" id="reff" name="reff"  ><br>
+						<label for="phonenumber">Téléphone</label><br>
 
-						<input type="text" id="phonenumber" name="phonenumber" placeholder="12-345-678"><br><br>
-						<label for="address">address</label><br>
+						<input type="text" id="phonenumber" name="phonenumber" placeholder="+216 12-345-678"><br><br>
+						<label for="address">Adresse</label><br>
 						<textarea id="address" name="address" placeholder="city , Quartier , rue , num de la maison.." style="height:170px"></textarea><br>
 
 
@@ -114,9 +107,9 @@ if (
 						<hr>-->
 						<form action="mail.php" method="post">
     <textarea name="texte" rows="10" cols="60"></textarea><br>
-    <button name="submit" value="envoyer" class="w3-button w3-green" onclick="move()">envoyer</button>
-	<button><a href="afficherListereservation.php">Retour à la liste des reservations</a></button>
-	<button><a href="resulat.php">la reponse</a></button>
+    <button name="submit" value="envoyer" class="w3-button w3-green" onclick="move()">Envoyer</button>
+	<button><a href="afficherListereservation.php">Retour à la liste des réservations</a></button>
+	<button><a href="resulat.php">La réponse</a></button>
 	
 
 		</form>
@@ -124,39 +117,12 @@ if (
 		</div>
 		</div>
 
-		<map name="workmap">
-			<area shape="rect" coords="34,44,270,350" alt="Computer" href="logo.PNG">
-
-		</map>
-		<!--<img src="logo.PNG" alt="tetdalel"  width="200" height="100" ">
-<map name="workmap">
-    <area shape="rect" coords="34,44,270,350" alt="Computer" href="logo.PNG" -->
-
-		<div class="header">
-
-
-		</div>
-
+		 
 
 	
 		<div class="row">
 		<div class="newspaper">
-			<div class="column">
-			
-				<h2>troc</h2>
-				<p>Bien que cette expression désigne un système économique qui est très ancien (l'Egypte des pharaons la pratiquait notamment), elle n'a, quant à elle, vu le jour qu'à la fin du XIXe siècle,.</p>
-			</div>
-
-			<div class="column">
-				<h2>donation</h2>
-				<p>Le don est l’expression de notre engagement envers autrui. C’est un acte que l’on fait par compassion, solidarité ou engagement envers une cause. « La générosité est la clef de toutes les autres vertus.</p>
-			</div>
-
-			<div class="column">
-				<h2>evenement</h2>
-				<p>L’événementiel sportif est un métier de passion et de volonté, qui demande rigueur, organisation et de grandes qualités relationnelles. ..</p>
-					
-			</div>
+			 
 		</div>
 
 		<!-- Wrapper -->
@@ -164,27 +130,34 @@ if (
 
 			<!-- Header -->
 			<header id="header" class="alt">
-				<a href="index.html" class="logo"><img src="images/logo.png" /></a>
+				<a  class="logo"><img src="images/logo.png" /></a>
+				<?php echo $_SESSION['nom'];?> 
+					<?php echo $_SESSION['prenom'];?> 
+					 
 				<nav>
-					<a href="#menu">Menu</a>
+				
+				<a href="profile.php" >Profile<a>
+						<a href="#menu">Menu</a>
 				</nav>
 			</header>
 
 			<!-- Menu -->
 			<nav id="menu">
 				<ul class="links">
-				<li > <a href="acceuil.php">Acceuil </a> </li>
+					<li > <a href="acceuil2.php">Acceuil </a> </li>
 
-<li class="active"> <a href="addreservation.php">Reservation</a> </li>
+					<li> <a href="front.php">Catégorie</a> </li>
 
-<li> <a href="front.php">Catégorie</a> </li>
+					<li class="active"> <a href="addreservation.php">Reservation</a> </li>
 
-<li> <a href="afficherListeEvenements.php">Evenement</a> </li>
+					<li > <a href="adddemande.php">Demande</a> </li>
 
-<li><a href="afficherassociationf.php">Association</a></li>
+				
+					<li> <a href="afficherListeEvenements.php">Evenement</a> </li>
+
+					<li><a href="afficherassociationf.php">Association</a></li>
 				</ul>
 			</nav>
-
 			<!-- Main -->
 			<div id="main" class="alt">
 

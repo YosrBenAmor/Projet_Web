@@ -24,6 +24,11 @@ function verif() {
    {
     nomER.innerHTML =  "Veuillez enter votre nom!";
    }
+   else if(!(nom.match(letters) && nom.charAt(0).match(/^[A-Z]+$/))) 
+    {
+        nomER.innerHTML = "Veuillez entrer le premier lettre en majuscule!";
+    } 
+    
    else if(prenom == "") 
    {
     prenomER.innerHTML = "Veuillez enter votre prénom!";          
@@ -32,17 +37,29 @@ function verif() {
    {
     emailER.innerHTML = "Veuillez entrer votr mail!";
    }
+   else if  (!email.match('@gmail.com') ) 
+   {
+       emailER.innerHTML = "Votre mail doit être finir avec @gmail.com  !";
+   }
    else if (password == "") 
    {
     passER.innerHTML = "Veuillez enter une password!";
+   }
+   else if (password.length < 6 ) 
+   {
+    passER.innerHTML = "password doit contenir 6 caracteres ou plus!";
    }
    else if (tel == "") 
    {
     telER.innerHTML = "Veuillez enter votre numéro de téléphone!";
    }
+   else if(!tel.match(indiaRegex))
+{
+    telER.innerHTML = "Votre numéro doit commencer par +216";
+}
    else if (adresse== "") 
    {
-    adlER.innerHTML = "Veuillez enter votre numéro de téléphone!";
+    adER.innerHTML = "Veuillez enter votre numéro de téléphone!";
    }
  
 

@@ -15,7 +15,7 @@ class evenementC
             die('Error:' . $e->getMessage());
         }
     }
-
+  
     function deleteevenement($id_eve)
     {
         $sql = "DELETE FROM  evenement WHERE id_eve=:id_eve";

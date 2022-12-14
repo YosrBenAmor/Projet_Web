@@ -1,6 +1,6 @@
 <?php
-include '../../controller/demandeC.php';
-session_start();
+include '../controller/demandeC.php';
+
 $demandeC = new demandeC();
 $listedemande = $demandeC->afficherListedemande();
 ?>
@@ -19,24 +19,57 @@ $listedemande = $demandeC->afficherListedemande();
 </head>
 
 <body class="is-preload">
+<header id="header" class="alt">
+					<a  class="logo"><img src="images/logo.png"  /></a>
+					<?php echo $_SESSION['nom'];?> 
+					<?php echo $_SESSION['prenom'];?> 
+					 
+					
+					<nav>
+					
+					<a href="profile.php" >Profile<a>
+						<a href="#menu">Menu</a>
+						 
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+				<ul class="links">
+					<li > <a href="acceuil2.php">Acceuil </a> </li>
+
+					<li> <a href="front.php">Catégorie</a> </li>
+
+					<li > <a href="addreservation.php">Reservation</a> </li>
+
+					<li class="active"> <a href="adddemande.php">Demande</a> </li>
+
+				
+					<li> <a href="afficherListeEvenements.php">Evenement</a> </li>
+
+					<li><a href="afficherassociationf.php">Association</a></li>
+				</ul>
+			</nav>
 
 
 
     <center>
-        <h1>List of demandes</h1>
+        <br><br><br><br>
+        
+        <h1>Liste des demandes</h1>
         <h2>
-            <a href="adddemande.php"> demande</a>
+            <a href="adddemande.php"> Demande</a>
         </h2>
 
         <table border="1" align="center" width="70%">
             <tr>
-                <th>Id demande</th>
-                <th> Name</th>
-                <th>mot de passe </th>
-                <th>email</th>
-                <th>reffdd</th>
-                <th>telp</th>
-                <th>status</th>
+                 
+                <th> Nom</th>
+                <th>Mot de passe </th>
+                <th>Émail</th>
+                <th>Référence</th>
+                <th>Téléphone</th>
+                <th>Status</th>
 
             </tr>
     </center>
